@@ -1,4 +1,6 @@
 import { Config } from "../../config.mjs";
+import { BoardModel } from "../board.model.mjs";
+import { ColumnsForBoard } from "../columnsBoard.model.mjs";
 import { UserModel } from "../user.model.mjs";
 
 export class MyUsersService {
@@ -13,6 +15,17 @@ export class MyUsersService {
             users.push(user);
         });
         return users;
+    }
+
+    async getBoard(){
+        const result = await fetch(`${Config.BackendURL}/boards`).then(response => response.json());
+        const board = new BoardModel(result.data);
+        const columns = new Array();
+        board.data.columnsForBoard.forEach(column => {
+            columns.push(new ColumnsForBoard(column));
+        });
+        columns.ColumnsForBoard(columns);
+        return board;
     }
 
     async getUserById(id) {

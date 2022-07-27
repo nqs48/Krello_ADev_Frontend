@@ -20,6 +20,7 @@ export class Table {
         this.#privateData = data;
     }
 
+
     #privateGenerateTable() {
         const table = document.createElement('table');
         table.classList.add('table');

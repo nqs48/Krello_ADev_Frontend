@@ -24,9 +24,7 @@ import lombok.Data;
 @Entity
 @Table(name = "krl_board")
 public class BoardDomain implements Serializable {
-
     private static final long serialVersionUID = 1L;
-
     @PreUpdate
     public void preUpdate() {
         if (this.updatedAt == null)
