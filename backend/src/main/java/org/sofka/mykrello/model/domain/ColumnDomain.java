@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
@@ -58,5 +58,9 @@ public class ColumnDomain implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, targetEntity = ColumnForBoardDomain.class, cascade = CascadeType.ALL, mappedBy = "column")
     @JsonManagedReference(value = "columnForBoards")
     private List<ColumnForBoardDomain> columnForBoards = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY,targetEntity = TaskDomain.class,mappedBy = "columnTask",cascade = CascadeType.ALL)
+    @JsonBackReference(value = "task-by-column")
+    private List<TaskDomain> tasksByColumn;
 
 }
