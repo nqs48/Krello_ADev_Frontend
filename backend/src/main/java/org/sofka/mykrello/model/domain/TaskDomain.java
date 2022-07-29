@@ -1,7 +1,7 @@
 package org.sofka.mykrello.model.domain;
-
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,9 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 @Data
@@ -28,20 +29,22 @@ public class TaskDomain implements Serializable {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = ColumnDomain.class, optional = false, cascade = CascadeType.DETACH)
-    @JoinColumn(name = "clm_id_column", nullable = false)
+    @JoinColumn(name = "clm_id_column")
+    @JsonBackReference(value = "tasksByColumn")
     private ColumnDomain columnTask;
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = BoardDomain.class, optional = false, cascade = CascadeType.DETACH)
-    @JoinColumn(name = "brd_id_board", nullable = false)
+    @JoinColumn(name = "brd_id_board")
+    @JsonBackReference(value = "tasksByBoard")
     private BoardDomain boardTask;
 
     @Column(name = "tsk_name",nullable = false,length = 100)
     private String nameTask;
 
-    @Column(name = "tsk_description",nullable = false,length = 2000)
+    @Column(name = "tsk_description",length = 2000)
     private String descriptionTask;
 
-    @Column(name ="tsk_delivery_date",nullable = false)
+    @Column(name ="tsk_delivery_date")
     private Instant deliveryTask;
 
     @Column(name = "tsk_created_at", nullable = false, updatable = false)
@@ -49,6 +52,10 @@ public class TaskDomain implements Serializable {
 
     @Column(name = "tsk_updated_at")
     private Instant updatedAtTask;
+
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = LogDomain.class, cascade = CascadeType.ALL, mappedBy = "task")
+    @JsonManagedReference(value = "taskLog")
+    private List<LogDomain> taskLogs;
 
 
 

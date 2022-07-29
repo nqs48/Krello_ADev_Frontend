@@ -7,6 +7,7 @@ import org.sofka.mykrello.model.domain.ColumnForBoardDomain;
 import org.sofka.mykrello.model.repository.BoardRepository;
 import org.sofka.mykrello.model.repository.ColumnForBoardRepository;
 import org.sofka.mykrello.model.repository.ColumnRepository;
+import org.sofka.mykrello.model.repository.TaskRepository;
 import org.sofka.mykrello.model.service.interfaces.BoardServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,9 @@ public class BoardService implements BoardServiceInterface {
 
     @Autowired
     private ColumnForBoardRepository columnForBoardRepository;
+
+    @Autowired
+    private TaskRepository taskRepository;
 
     @Override
     @Transactional(readOnly = true)
@@ -67,9 +71,15 @@ public class BoardService implements BoardServiceInterface {
         if (optionalBoard.isPresent()) {
             var board = optionalBoard.get();
             var columnsForBoard = board.getColumnsForBoard();
+            var tasksForboard = board.getTasksByBoard();
             if (!columnsForBoard.isEmpty()) {
                 columnsForBoard.forEach((column) -> {
                     columnForBoardRepository.delete(column);
+                });
+            }
+            if(!tasksForboard.isEmpty()){
+                tasksForboard.forEach((task)->{
+                    taskRepository.delete(task);
                 });
             }
             boardRepository.delete(optionalBoard.get());
