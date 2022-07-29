@@ -2,6 +2,7 @@ import { Config } from "../../config.mjs";
 import { BoardModel } from "../board.model.mjs";
 import { ColumnsForBoard } from "../columnsBoard.model.mjs";
 import { UserModel } from "../user.model.mjs";
+import{ boardObj } from "../../../data/data.js";
 
 export class MyUsersService {
 
@@ -45,5 +46,21 @@ export class MyUsersService {
             }
         ).then(response => response.json());
     }
+
+    SimulateData() {
+      return boardObj.map((board) => new BoardModel(board));
+     }
+
+     GetStorageBoard(){
+
+        const board = localStorage.getItem("Id_Board");
+        return board;   
+     }
+
+
+
+
+
+    
 
 }

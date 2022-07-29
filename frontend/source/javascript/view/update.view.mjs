@@ -1,24 +1,29 @@
 'use strict';
 
-import { FormularioUsurio } from "./components/formulario-usuario.component.mjs";
 import { Navbar } from "./components/navbar.component.mjs";
+import { Container } from "./components/container.component.mjs";
 
 export class UpdateView {
     #privateContainer;
     #privateNavbar;
-    #privateForm;
+    containerBoard;
+    privateData;
 
     constructor() {
-        this.#privateContainer = document.querySelector('.container');
+        this.#privateContainer = document.getElementById('container');
         this.#privateNavbar = new Navbar();
-        this.#privateForm = new FormularioUsurio();
+        this.containerBoard = new Container();
     }
 
-    init(formularioSubmit, data) {
+    set Data(data) {
+        this.privateData = data;
+    }
+
+    init() {
+        document.Title = "Board | Krello";
         this.#privateContainer.append(
-            this.#privateNavbar.get(),
-            this.#privateForm.get(formularioSubmit, data)
+          this.#privateNavbar.get(),
+          this.containerBoard.get()
         );
     }
-
-}
+  }

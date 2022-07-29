@@ -6,18 +6,24 @@ import { MyUsersService } from "../model/services/my-users.service.mjs";
 // Views
 import { IndexView } from "../view/index.view.mjs";
 
+import { BoardModel } from "../model/board.model.mjs" 
+
 class IndexController {
     #privateView;
     #privateMyUsersService;
 
     constructor() {
-        const headerData = ['nombre', 'apellidos', 'correo', 'teléfono', 'creado', 'acciones'];
-        this.#privateView = new IndexView(headerData);
+        this.#privateView = new IndexView();
         this.#privateMyUsersService = new MyUsersService();
     }
 
     async init() {
-        this.#privateView.Data = await this.#privateMyUsersService.getBoard();
+        //this.#privateView.Data = await this.#privateMyUsersService.getBoard();
+        
+        //Get simulate Data      
+        this.#privateView.Data=this.#privateMyUsersService.SimulateData();
+        
+        console.log(this.#privateView.privateData);
         this.#privateView.init();
     }
 }

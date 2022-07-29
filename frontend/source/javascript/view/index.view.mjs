@@ -1,30 +1,38 @@
 'use strict';
 
 import { Navbar } from "./components/navbar.component.mjs";
-import { Table } from "./components/table.component.mjs";
+import { Container } from "./components/container.component.mjs";
+import { BoardCard } from "./components/board-card.component.mjs";
 
 export class IndexView {
     #privateContainer;
     #privateNavbar;
-    #privateTable;
-    #privateData;
+    containerBoard;
+    privateData;
 
-    constructor(header) {
-        this.#privateContainer = document.querySelector('.container');
+    constructor() {
+        this.#privateContainer = document.getElementById('container');
         this.#privateNavbar = new Navbar();
-        this.#privateTable = new Table(header);
+        this.containerBoard = new Container();
     }
 
     set Data(data) {
-        this.#privateData = data;
+        this.privateData = data;
     }
 
     init() {
-        this.#privateTable.Data = this.#privateData;
-        this.#privateContainer.append(
-            this.#privateNavbar.get(),
-            this.#privateTable.get()
-        );
-    }
+      
+      const card = new BoardCard();
+      this.containerBoard.get().append(card.ContainerAdd);
+      this.privateData.map( board => {     
+          this.containerBoard.get().append(card.GenerateBoardCard(board));
+      })
 
-}
+      
+
+      this.#privateContainer.append(this.#privateNavbar.get(),this.containerBoard.get());
+    }
+  
+
+
+} 
