@@ -18,6 +18,9 @@ class IndexController {
     }
 
     async init() {
+      
+
+
         //this.#privateView.Data = await this.#privateMyUsersService.getBoard();
         
         //Get simulate Data      

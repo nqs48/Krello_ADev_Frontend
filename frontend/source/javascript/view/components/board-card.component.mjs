@@ -43,18 +43,14 @@ export class BoardCard {
     textCard.classList.add("card-text");
     textCard.textContent = board.CreatedAt;
 
-    const buttonDelete = document.createElement("button");
-    buttonDelete.classList.add("btn", "btn-danger");
-    buttonDelete.textContent = "Delete";
-    buttonDelete.setAttribute("data-bs-toggle", "modal","data-bs-target", "#exampleModal");
-    buttonDelete.addEventListener("click", (e) => {
-      e.preventDefault();
-      setTimeout(() => {
-        this.GenerateConfirmationCard();
-      }, 1000);
-    });
+    // const buttonDelete = document.createElement("button");
+    // buttonDelete.classList.add("btn", "btn-danger");
+    // buttonDelete.textContent = "Delete";
+    // buttonDelete.addEventListener("click",function(){
+    //   console.log("Delete board");
+    // })
 
-    bodyCard.append(titleCard, textCard, buttonDelete);
+    bodyCard.append(titleCard, textCard);
     component.append(img, bodyCard);
     return component;
   }

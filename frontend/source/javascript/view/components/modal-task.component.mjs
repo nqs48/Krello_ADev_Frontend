@@ -1,15 +1,15 @@
 export class ModalTask {
-  #containerTask;
+  #containerModalTask;
 
   constructor() {
-    this.#GenerateNavbar();
+    this.#GenerateModalTask();
   }
 
   get() {
     return this.containerTask;
   }
 
-  #GenerateContainerTask(data) {
+  #GenerateModalTask(data) {
     const modalContainer = document.createElement("div");
     modalContainer.classList.add("modal-container");
 
@@ -43,25 +43,15 @@ export class ModalTask {
     descriptionTask.textContent = "This is the description of the task";
 
     //container log Task
-    const containerLogs = document.createElement("div");
-    data.logs.forEach(log => renderLogs(log,containerLogs))
-    
+    // const containerLogs = document.createElement("div");
+    // data.logs.forEach(log => renderLogs(log,containerLogs))
+
+    //Add all texts to containerText without ContainerLogs
+    taskTextContainer.append(titleTask, dateTask, descriptionTask);
 
 
-    const name = document.createElement("a");
-    name.classList.add("navbar-brand");
-    name.href = "#";
-    name.textContent = "Navbar";
+    this.#containerModalTask = modalContainer;
 
-    const button = document.createElement("button");
-    button.type = "button";
-    button.classList.add("btn", "btn-success");
-    button.textContent = "Agregar";
-
-    div.append(name, button);
-    nav.appendChild(div);
-
-    this.#Navbar = nav;
   }
 
   renderLogs(log, containerFather){
@@ -69,6 +59,8 @@ export class ModalTask {
     logText.textContent = log;
     containerFather.appendChild(logText);
   }
+
+  
 
 
   

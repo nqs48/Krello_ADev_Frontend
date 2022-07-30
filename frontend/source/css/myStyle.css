@@ -1,3 +1,11 @@
+*{
+  margin:0;
+  padding:0;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box
+}
+
+
 body{
   min-height: 100vh;
   background-image: radial-gradient(circle at 4.55% -4.17%, #feffff 0, #efffff 12.5%, #ddfffd 25%, #cafbf7 37.5%, #b5f2f2 50%, #9fe9ee 62.5%, #8ae1ec 75%, #76d9eb 87.5%, #62d1eb 100%);
@@ -59,4 +67,44 @@ body{
 
 .imgCardAdd{
   padding: 4.5rem;
+}
+
+
+//Styles for Modal Container Task
+.modal-container{
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.modal{
+  width: 40%;
+  height: 50%;
+  background-color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: relative;
+  transition: transform 1s;
+  transform: translateY(0%);
+
+}
+
+.modal-close{
+  transform: translateY(-200%);
+}
+
+.modal > img {
+  height: 50%;
 }
