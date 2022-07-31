@@ -14,10 +14,8 @@ export class BoardColumn {
     return this.#taskComponent;
   }
 
-
-
   GenerateBoardColumn(column) {
-    const taskList=[]
+    console.log(column);
     const component = document.createElement("div");
     component.classList.add("columnOwn");
     // component.addEventListener("click", () => {
@@ -44,16 +42,16 @@ export class BoardColumn {
       const taskContainer = document.createElement("div");
       taskContainer.classList.add("taskContainer");
       taskContainer.addEventListener("click", () => {
-        console.log(task.id)
+        console.log(task.Id)
       })
 
       const titleTask = document.createElement("p");
       titleTask.classList.add("task-title");
-      titleTask.textContent = task.title;
+      titleTask.textContent = task.Name;
 
       const deliveryTask = document.createElement("p");
       deliveryTask.classList.add("task-delivery");
-      deliveryTask.textContent = task.deliveryDate;
+      deliveryTask.textContent = task.DeliveryDate;
       taskContainer.append(titleTask, deliveryTask);
 
       bodyColumn.append(taskContainer);

@@ -1,11 +1,9 @@
 import { Config } from "../../config.mjs";
 import { BoardModel } from "../board.model.mjs";
-import { ColumnsForBoard } from "../columnsBoard.model.mjs";
 import { UserModel } from "../user.model.mjs";
 import{ boardObj } from "../../../data/data.js";
 
 export class MyUsersService {
-  constructor() {}
 
   async getUsers() {
     const data = await fetch(`${Config.BackendURL}/usuario/records`).then(
@@ -24,6 +22,18 @@ export class MyUsersService {
       response.json()
     );
     return result.data.map((board) => new BoardModel(board));
+    
+  }
+ 
+  async getBoardById(idBoard) {
+    const result = await fetch(`${Config.BackendURL}/board/${idBoard}`).then((response) =>
+                                                                          response.json());
+
+    const board = new BoardModel(result.data);
+    board.ColumnsForBoard[0].Tasks = await this.getTasksBycolumn(idBoard,board.ColumnsForBoard[0].Id.toString());
+    board.ColumnsForBoard[1].Tasks = await this.getTasksBycolumn(idBoard,board.ColumnsForBoard[1].Id.toString());
+    board.ColumnsForBoard[2].Tasks = await this.getTasksBycolumn(idBoard,board.ColumnsForBoard[2].Id.toString());
+    return board;
   }
 
   async getUserById(id) {
@@ -51,12 +61,16 @@ export class MyUsersService {
   //   return board.columnsForBoard.map((column) => new ColumnsBoardModel(column));
   // }
 
-  GetStorageBoard() {
+  async getBoard() {
     const id = localStorage.getItem("Id_Board");
-    const board= boardObj.find((board) => board.id == id);
-    const columns = board.columnsForBoard.map(
-      (column) => new ColumnsForBoard(column)
+    return this.getBoardById(id);
+  }
+
+  async getTasksBycolumn(idBoard,idColumn){
+    const task = await fetch(`${Config.BackendURL}/tasksbycolumn/${idBoard}/${idColumn}`).then(
+      (response) => response.json()
     );
-    return columns;
+    return task;
+
   }
 }

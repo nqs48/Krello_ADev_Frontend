@@ -13,7 +13,6 @@ export class BoardCard {
   }
 
 
-
   get ContainerAdd() {
     return this.#containerAdd;
   }
@@ -51,8 +50,7 @@ export class BoardCard {
     component.classList.add("card", "cardOwn");
     component.addEventListener("click", () => {
       window.open("images/update.html");
-    })
-
+    });
     const img = document.createElement("img");
     img.classList.add("card-img-top", "imgCardAdd");
     img.alt = "Add new board image ";
@@ -67,6 +65,7 @@ export class BoardCard {
   }
 
   CaptureBoardId(board) {
+    console.log(board);
     localStorage.setItem("Id_Board", JSON.stringify(board.Id));
 
     let nameId = board.Id;
