@@ -1,3 +1,5 @@
+import { ColumnsForBoard } from "./columnsBoard.model.mjs";
+
 export class BoardModel{
 
 
@@ -12,6 +14,7 @@ export class BoardModel{
         this.#name = object.name;
         this.#createdAt = object.createdAt;
         this.#updatedAt = object.updatedAt;
+        this.#columnsForBoard = object.columnsForBoard.map((column)=> new ColumnsForBoard(column));
 
     }
 

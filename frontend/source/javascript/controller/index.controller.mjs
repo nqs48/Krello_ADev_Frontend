@@ -24,7 +24,7 @@ class IndexController {
         //this.#privateView.Data = await this.#privateMyUsersService.getBoard();
         
         //Get simulate Data      
-        this.#privateView.Data=this.#privateMyUsersService.SimulateData();
+        this.#privateView.Data= await this.#privateMyUsersService.getBoards();
         
         console.log(this.#privateView.privateData);
         this.#privateView.init();

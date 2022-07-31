@@ -2,7 +2,7 @@ import {ConfirmationCard} from "./confirmation-card.component.mjs"
 export class BoardCard {
   #containerAdd;
 
-  constructor() {;
+  constructor() {
     this.#containerAdd = this.GenerateBoardCardAdd();
     
   }
@@ -13,7 +13,6 @@ export class BoardCard {
   }
 
 
- 
 
   get ContainerAdd() {
     return this.#containerAdd;
@@ -22,7 +21,7 @@ export class BoardCard {
   GenerateBoardCard(board) {
     const component = document.createElement("a");
     component.classList.add("card", "cardOwn");
-    component.href = "/update.html";
+    component.href = "update.html";
     component.addEventListener("click", () => {
       this.CaptureBoardId(board);
     })
@@ -30,7 +29,7 @@ export class BoardCard {
     const img = document.createElement("img");
     img.classList.add("card-img-top");
     img.alt = "Board background image";
-    img.src = "../../../images/board.png";
+    img.src = "images/board.png";
 
     const bodyCard = document.createElement("div");
     bodyCard.classList.add("card-body");
@@ -42,14 +41,6 @@ export class BoardCard {
     const textCard = document.createElement("p");
     textCard.classList.add("card-text");
     textCard.textContent = board.CreatedAt;
-
-    // const buttonDelete = document.createElement("button");
-    // buttonDelete.classList.add("btn", "btn-danger");
-    // buttonDelete.textContent = "Delete";
-    // buttonDelete.addEventListener("click",function(){
-    //   console.log("Delete board");
-    // })
-
     bodyCard.append(titleCard, textCard);
     component.append(img, bodyCard);
     return component;
@@ -59,13 +50,13 @@ export class BoardCard {
     const component = document.createElement("button");
     component.classList.add("card", "cardOwn");
     component.addEventListener("click", () => {
-      window.open("/update.html");
+      window.open("images/update.html");
     })
 
     const img = document.createElement("img");
     img.classList.add("card-img-top", "imgCardAdd");
     img.alt = "Add new board image ";
-    img.src = "/images/agregar.png";
+    img.src = "images/agregar.png";
 
     const titleCard = document.createElement("h5");
     titleCard.classList.add("card-title", "Card-add");

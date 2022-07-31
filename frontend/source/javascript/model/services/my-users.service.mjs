@@ -19,17 +19,11 @@ export class MyUsersService {
     return users;
   }
 
-  async getBoard() {
+  async getBoards() {
     const result = await fetch(`${Config.BackendURL}/boards`).then((response) =>
       response.json()
     );
-    const board = new BoardModel(result.data);
-    const columns = new Array();
-    board.data.columnsForBoard.forEach((column) => {
-      columns.push(new ColumnsForBoard(column));
-    });
-    columns.ColumnsForBoard(columns);
-    return board;
+    return result.data.map((board) => new BoardModel(board));
   }
 
   async getUserById(id) {
