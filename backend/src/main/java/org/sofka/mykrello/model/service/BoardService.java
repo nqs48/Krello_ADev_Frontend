@@ -79,6 +79,7 @@ public class BoardService implements BoardServiceInterface {
             }
             if(!tasksForboard.isEmpty()){
                 tasksForboard.forEach((task)->{
+                    System.out.println(task.getColumnTask());
                     taskRepository.delete(task);
                 });
             }

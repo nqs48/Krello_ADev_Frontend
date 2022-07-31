@@ -12,10 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 @Data
@@ -43,8 +40,9 @@ public class ColumnForBoardDomain implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = ColumnDomain.class, optional = false, cascade = CascadeType.DETACH)
     @JoinColumn(name = "clm_id_column", nullable = false)
-    @JsonManagedReference(value = "task-by-column")
+    @JsonBackReference(value = "columnBoard")
     private ColumnDomain column;
+
 
     @Column(name = "cfb_created_at", nullable = false, updatable = false)
     private Instant createdAt = Instant.now();

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ColumnService implements ColumnServiceInterface, ColumnForBoardInterface {
+public class ColumnService implements ColumnServiceInterface {
 
     @Autowired
     ColumnRepository columnRepository;
@@ -25,9 +25,5 @@ public class ColumnService implements ColumnServiceInterface, ColumnForBoardInte
         return columnRepository.findById(id).orElse(null);
     }
 
-    @Override
-    public List<TaskDomain> getTasksByColumn(Integer idColumnBoard) {
-        var columnEncontrada =  columnForBoardRepository.findById(idColumnBoard);
-        return columnEncontrada.get().getColumn().getTasksByColumn();
-    }
+
 }
