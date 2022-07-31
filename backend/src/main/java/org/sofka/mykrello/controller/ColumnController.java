@@ -1,5 +1,6 @@
 package org.sofka.mykrello.controller;
 
+import org.sofka.mykrello.model.service.ColumnForBoardService;
 import org.sofka.mykrello.model.service.ColumnService;
 import org.sofka.mykrello.utilities.MyResponseUtility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class ColumnController {
     ColumnService columnService;
 
     @Autowired
+    ColumnForBoardService columnForBoardService;
+    @Autowired
     private MyResponseUtility response;
 
 //    @GetMapping(path = "/api/v1/column")
@@ -27,11 +30,6 @@ public class ColumnController {
 //        return new ResponseEntity<>(response, HttpStatus.OK);
 //    }
 
-    @GetMapping(path = "/api/v1/tasksbycolumn/{id}")
-    public ResponseEntity<MyResponseUtility> getTasksByColumnId(@PathVariable(value = "id") Integer id) {
-        response.data = columnService.getTasksByColumn(id);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
 
 
 }

@@ -1,6 +1,7 @@
 package org.sofka.mykrello.model.domain;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -28,9 +29,9 @@ public class TaskDomain implements Serializable {
     @Column(name = "tsk_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = ColumnDomain.class, optional = false, cascade = CascadeType.DETACH)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = ColumnDomain.class, cascade = CascadeType.DETACH)
     @JoinColumn(name = "clm_id_column")
-    @JsonBackReference(value = "tasksByColumn")
+    @JsonBackReference(value = "task-by-column")
     private ColumnDomain columnTask;
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = BoardDomain.class, optional = false, cascade = CascadeType.DETACH)
@@ -53,9 +54,9 @@ public class TaskDomain implements Serializable {
     @Column(name = "tsk_updated_at")
     private Instant updatedAtTask;
 
-    @OneToMany(fetch = FetchType.LAZY, targetEntity = LogDomain.class, cascade = CascadeType.ALL, mappedBy = "task")
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = LogDomain.class, cascade = CascadeType.ALL, mappedBy = "task")
     @JsonManagedReference(value = "taskLog")
-    private List<LogDomain> taskLogs;
+    private List<LogDomain> taskLogs = new ArrayList<>();
 
 
 

@@ -15,13 +15,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import lombok.Data;
-
 @Data
 @Entity
 @Table(name = "krl_board")
 public class BoardDomain implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @PreUpdate
     public void preUpdate() {
@@ -49,10 +48,7 @@ public class BoardDomain implements Serializable {
 
     @OneToMany(mappedBy = "boardTask",cascade = CascadeType.ALL)
     @JsonManagedReference(value = "tasksByBoard")
-    private List<TaskDomain> tasksByBoard;
-
-
-
+    private List<TaskDomain> tasksByBoard = new ArrayList<>();
 
 
 }
