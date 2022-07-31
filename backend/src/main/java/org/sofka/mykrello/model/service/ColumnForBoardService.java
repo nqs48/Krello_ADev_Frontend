@@ -28,7 +28,7 @@ public class ColumnForBoardService implements ColumnForBoardInterface {
         List<TaskDomain> taskByBoard = new ArrayList<>();
         if(!tasks.isEmpty()){
             tasks.forEach((task)->{
-                if(task.getBoardTask().getId().equals(idBoard)){
+                if(task.getBoardTask().getId().equals(idBoard) && task.getEnable()){
                     taskByBoard.add(task);
                 }
             });

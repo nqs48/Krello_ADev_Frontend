@@ -14,12 +14,21 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
-
+/**
+ * Entidad del Tablero
+ *
+ * @version 1.0.0 2022-07-30
+ * @author Nestor Quiroga <nqs48@hotmail.com>, Julian Escobar <julian.lasso@sofka.com.co>
+ * @since 1.0.0
+ */
 @Data
 @Entity
 @Table(name = "krl_column_for_board")
 public class ColumnForBoardDomain implements Serializable {
 
+    /**
+     * Variable usada para manejar el tema del identificador de la tupla (consecutivo)
+     */
     private static final long serialVersionUID = 1L;
 
     @PreUpdate

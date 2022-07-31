@@ -17,13 +17,24 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
-
+/**
+ * Entidad del Tablero
+ *
+ * @version 1.0.0 2022-07-30
+ * @author Nestor Quiroga <nqs48@hotmail.com>, Julian Escobar <julian.lasso@sofka.com.co>
+ * @since 1.0.0
+ */
 @Data
 @Entity
 @Table(name = "krl_task")
 public class TaskDomain implements Serializable {
 
+    /**
+     * Variable usada para manejar el tema del identificador de la tupla (consecutivo)
+     */
     private static final long serialVersionUID = 1L;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tsk_id", nullable = false)
@@ -57,6 +68,9 @@ public class TaskDomain implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, targetEntity = LogDomain.class, cascade = CascadeType.ALL, mappedBy = "task")
     @JsonManagedReference(value = "taskLog")
     private List<LogDomain> taskLogs = new ArrayList<>();
+
+    @Column(name = "tsk_enable")
+    private Boolean enable = true;
 
 
 

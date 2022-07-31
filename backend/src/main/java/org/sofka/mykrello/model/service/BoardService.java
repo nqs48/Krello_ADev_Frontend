@@ -73,7 +73,16 @@ public class BoardService implements BoardServiceInterface {
     @Override
     @Transactional
     public BoardDomain update(Integer id, BoardDomain board) {
-        board.setId(id);
+        var boardfind = boardRepository.findById(id);
+        if(boardfind.isPresent()){
+            board.setId(id);
+            if(board.getName() == null) board.setName(boardfind.get().getName());
+            if(board.getCreatedAt() == null) board.setCreatedAt(boardfind.get().getCreatedAt());
+            if(board.getUpdatedAt() == null) board.setUpdatedAt(boardfind.get().getUpdatedAt());
+            if(board.getTasksByBoard() == null) board.setTasksByBoard(boardfind.get().getTasksByBoard());
+            if(board.getColumnsForBoard() == null) board.setColumnsForBoard(boardfind.get().getColumnsForBoard());
+            if(board.getEnable() == null) board.setEnable(boardfind.get().getEnable());
+        }
         return boardRepository.save(board);
     }
 

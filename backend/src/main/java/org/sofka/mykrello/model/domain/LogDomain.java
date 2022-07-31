@@ -12,16 +12,23 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import lombok.Data;
-
+/**
+ * Entidad del Tablero
+ *
+ * @version 1.0.0 2022-07-30
+ * @author Nestor Quiroga <nqs48@hotmail.com>, Julian Escobar <julian.lasso@sofka.com.co>
+ * @since 1.0.0
+ */
 @Data
 @Entity
 @Table(name = "krl_log")
 public class LogDomain implements Serializable {
 
+    /**
+     * Variable usada para manejar el tema del identificador de la tupla (consecutivo)
+     */
     private static final long serialVersionUID = 1L;
 
     @Id

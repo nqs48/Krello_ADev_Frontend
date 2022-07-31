@@ -29,7 +29,13 @@ public class TaskService implements TaskServiceInterface {
     }
     @Override
     public TaskDomain findById(Integer id) {
-        return taskRepository.findById(id).orElse(null);
+        var task = taskRepository.findById(id);
+        if(task.isPresent()){
+            if(task.get().getEnable())return task.get();
+            return null;
+        }else{
+            return null;
+        }
     }
 
     @Override
@@ -73,7 +79,13 @@ public class TaskService implements TaskServiceInterface {
     @Override
     public TaskDomain delete(Integer id) {
         var taskToDelete = taskRepository.findById(id);
-        taskRepository.delete(taskToDelete.get());
-        return taskToDelete.get();
+        if(taskToDelete.isPresent()){
+            taskToDelete.get().setEnable(false);
+            taskRepository.save(taskToDelete.get());
+            return taskToDelete.get();
+        }else{
+            return null;
+        }
+
     }
 }
