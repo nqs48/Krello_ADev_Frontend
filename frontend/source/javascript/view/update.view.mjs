@@ -25,11 +25,9 @@ export class UpdateView {
     console.log(this.privateData)
     const boardColumn = new BoardColumn();
 
-    this.privateData.forEach(columnObject => {
-      console.log(columnObject);
-      
+    this.privateData.ColumnsForBoard.forEach(columnObject => {
+      console.log(columnObject.Id);
       const oneColumn = boardColumn.GenerateBoardColumn(columnObject);
-
       this.containerColumn.get().append(oneColumn);
     });
 

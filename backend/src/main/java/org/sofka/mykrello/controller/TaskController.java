@@ -48,9 +48,10 @@ public class TaskController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @GetMapping(path = "/api/v1/tasksbycolumn/{id}")
-    public ResponseEntity<MyResponseUtility> getTasksByColumnId(@PathVariable(value = "id") Integer id) {
-        response.data = columnForBoardService.getTasksByColumn(id);
+    @GetMapping(path = "/api/v1/tasksbycolumn/{idBoard}/{idColumn}")
+    public ResponseEntity<MyResponseUtility> getTasksByColumnId(@PathVariable(value = "idBoard") Integer idBoard,
+                                                                @PathVariable(value = "idColumn")Integer idColumn) {
+        response.data = columnForBoardService.getTasksByColumn(idBoard,idColumn);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

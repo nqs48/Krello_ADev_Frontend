@@ -5,22 +5,24 @@ export class TaskModel {
   #deliveryDate;
   #createdAt;
   #updatedAt;
-  #idColumn;
-  #idBoard;
+  #logs;
 
   constructor(object) {
     this.#id = object.id;
-    this.#name = object.name;
-    this.#description=object.description; 
-    this.#deliveryDate=object.deliveryDate;
-    this.#createdAt = object.createdAt;
-    this.#updatedAt = object.updatedAt;
-    this.#idColumn=object.idColumn;
-    this.#idBoard=object.idBoard;
+    this.#name = object.nameTask;
+    this.#description=object.descriptionTask; 
+    this.#deliveryDate=object.deliveryTask;
+    this.#createdAt = object.createdAtTask;
+    this.#updatedAt = object.updatedAtTask;
+    this.#logs = object.taskLogs;
   }
 
   get Id() {
     return this.#id;
+  }
+
+  get Logs(){
+    return this.#logs;
   }
 
   get Name() {
@@ -43,11 +45,4 @@ export class TaskModel {
     return this.#updatedAt;
   }
   
-  get IDColumn() {
-    return this.#idColumn;
-  }
-
-  get IDBoard() {
-    return this.#idBoard;
-  }
 }

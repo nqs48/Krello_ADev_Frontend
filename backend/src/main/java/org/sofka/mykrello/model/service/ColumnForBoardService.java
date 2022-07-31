@@ -7,6 +7,7 @@ import org.sofka.mykrello.model.service.interfaces.ColumnForBoardInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,7 +23,16 @@ public class ColumnForBoardService implements ColumnForBoardInterface {
     }
 
     @Override
-    public List<TaskDomain> getTasksByColumn(Integer idColumn) {
-        return columnForBoardRepository.findById(idColumn).get().getColumn().getTasksByColumn();
+    public List<TaskDomain> getTasksByColumn(Integer idBoard,Integer idColumn) {
+        var tasks =  columnForBoardRepository.findById(idColumn).get().getColumn().getTasksByColumn();
+        List<TaskDomain> taskByBoard = new ArrayList<>();
+        if(!tasks.isEmpty()){
+            tasks.forEach((task)->{
+                if(task.getBoardTask().getId() == idBoard){
+                    taskByBoard.add(task);
+                }
+            });
+        }
+        return taskByBoard;
     }
 }

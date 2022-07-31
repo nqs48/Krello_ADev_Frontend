@@ -1,3 +1,6 @@
+drop database if exists krello;
+create database krello;
+use krello;
 create table krl_board
 (
     brd_id         int unsigned auto_increment

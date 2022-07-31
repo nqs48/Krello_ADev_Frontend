@@ -1,5 +1,4 @@
 "use strict";
-
 // Services
 import { MyUsersService } from "../model/services/my-users.service.mjs";
 
@@ -19,11 +18,8 @@ class UpdateController {
 
   async init() {
     //this.#privateView.Data = await this.#privateMyUsersService.getBoard();
-    console.log(this.#privateMyUsersService.GetStorageBoard());
-
     //Get simulate Data
-    this.#privateView.Data = this.#privateMyUsersService.GetStorageBoard();
-
+    this.#privateView.Data = await this.#privateMyUsersService.getBoard();
     //console.log(this.#privateView.privateData);
     this.#privateView.init();
   }
