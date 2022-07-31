@@ -15,7 +15,7 @@ export class BoardColumn {
   }
 
   GenerateBoardColumn(column) {
-    console.log(column.getTasks());
+    console.log(column);
     const component = document.createElement("div");
     component.classList.add("columnOwn");
     // component.addEventListener("click", () => {

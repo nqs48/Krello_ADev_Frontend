@@ -1,11 +1,9 @@
 import { Config } from "../../config.mjs";
 import { BoardModel } from "../board.model.mjs";
-import { ColumnsForBoard } from "../columnsBoard.model.mjs";
 import { UserModel } from "../user.model.mjs";
 import{ boardObj } from "../../../data/data.js";
 
 export class MyUsersService {
-  constructor() {}
 
   async getUsers() {
     const data = await fetch(`${Config.BackendURL}/usuario/records`).then(
@@ -32,11 +30,9 @@ export class MyUsersService {
                                                                           response.json());
 
     const board = new BoardModel(result.data);
-    board.ColumnsForBoard.forEach(async (column)=>{
-      const tasks = await this.getTasksBycolumn(idBoard,column.Id);
-      column.setTasks(tasks.data);
-    });
-    console.log(board);
+    board.ColumnsForBoard[0].Tasks = await this.getTasksBycolumn(idBoard,board.ColumnsForBoard[0].Id.toString());
+    board.ColumnsForBoard[1].Tasks = await this.getTasksBycolumn(idBoard,board.ColumnsForBoard[1].Id.toString());
+    board.ColumnsForBoard[2].Tasks = await this.getTasksBycolumn(idBoard,board.ColumnsForBoard[2].Id.toString());
     return board;
   }
 
@@ -71,9 +67,10 @@ export class MyUsersService {
   }
 
   async getTasksBycolumn(idBoard,idColumn){
-    return fetch(`${Config.BackendURL}/tasksbycolumn/${idBoard}/${idColumn}`).then(
+    const task = await fetch(`${Config.BackendURL}/tasksbycolumn/${idBoard}/${idColumn}`).then(
       (response) => response.json()
     );
+    return task;
 
   }
 }

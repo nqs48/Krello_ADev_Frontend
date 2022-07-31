@@ -56,7 +56,11 @@ export class BoardCard {
     img.alt = "Add new board image ";
     img.src = "images/agregar.png";
 
-    component.append(img);
+    const titleCard = document.createElement("h5");
+    titleCard.classList.add("card-title", "Card-add");
+    titleCard.textContent = "Create a new board";
+
+    component.append(img, titleCard);
     return component;
   }
 
@@ -67,5 +71,5 @@ export class BoardCard {
     let nameId = board.Id;
     console.log("Go to board " + nameId);
   }
-  
+
 }

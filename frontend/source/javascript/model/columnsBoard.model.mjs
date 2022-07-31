@@ -4,7 +4,7 @@ export class ColumnsForBoard {
   #id;
   #createdAt;
   #updatedAt;
-  tasks;
+  #tasks;
 
   constructor(object) {
     this.#id = object.id;
@@ -12,9 +12,9 @@ export class ColumnsForBoard {
     this.#updatedAt = object.updatedAt;
   }
 
-  setTasks(tasks){
+  set Tasks(tasks){
 
-    this.tasks = tasks.map((task) => new TaskModel(task));
+    this.#tasks = tasks.data.map((task) => new TaskModel(task));
   }
 
   get Id() {
@@ -30,7 +30,7 @@ export class ColumnsForBoard {
   }
 
   get Tasks(){
-    return this.tasks;
+    return this.#tasks;
   }
 
 }
