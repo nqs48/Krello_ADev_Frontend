@@ -1,36 +1,29 @@
 
-export class ColumnsForBoard{
+export class ColumnsForBoard {
+  #id;
+  #name;
+  #createdAt;
+  #updatedAt;
 
-    #id;
-    #createdAt;
-    #updatedAt;
+  constructor(object) {
+    this.#id = object.id;
+    this.#name = object.name;
+    this.#createdAt = object.createdAt;
+    this.#updatedAt = object.updatedAt;
+  }
 
-    constructor(object){
-        this.#id = object.id;
-        this.#createdAt = object.createdAt;
-        this.#updatedAt = object.updatedAt;
-    }
+  get Id() {
+    return this.#id;
+  }
+  get Name() {
+    return this.#name;
+  }
 
-    get Id(){
-        return this.#id;
-    }
+  get CreatedAt() {
+    return this.#createdAt;
+  }
 
-    get CreatedAt(){
-        return this.#createdAt;
-    }
-
-    get UpdatedAt(){
-        return this.#updatedAt;
-    }
-
-
-
-
-
-
-
-
-
-
-
+  get UpdatedAt() {
+    return this.#updatedAt;
+  }
 }
