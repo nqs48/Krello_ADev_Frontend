@@ -77,4 +77,5 @@ export class BoardCard {
     let nameId = board.Id;
     console.log("Go to board " + nameId);
   }
+  
 }
