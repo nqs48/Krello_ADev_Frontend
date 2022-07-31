@@ -44,8 +44,8 @@ export class MyUsersService {
   }
 
   async update(id, data) {
-    await fetch(`${Config.BackendURL}/usuario/records/${id}`, {
-      method: "PATCH",
+    await fetch(`${Config.BackendURL}/board/records/${id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
