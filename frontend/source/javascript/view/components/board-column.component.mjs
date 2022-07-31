@@ -1,13 +1,22 @@
+import {TaskComponent} from "./task.component.mjs";
+
 export class BoardColumn {
+
+  #taskComponent;
  
 
   constructor() {
     
+    this.#taskComponent=new TaskComponent();
+  }
+
+  get TaskComponent() {
+    return this.#taskComponent;
   }
 
 
 
-  GenerateBoardColumn(columna) {
+  GenerateBoardColumn(column) {
     const taskList=[]
     const component = document.createElement("div");
     component.classList.add("columnOwn");
@@ -22,14 +31,16 @@ export class BoardColumn {
 
     const titleColumn = document.createElement("h5");
     titleColumn.classList.add("card-title");
-    titleColumn.textContent = columna.Name;
+    titleColumn.textContent = column.Name;
 
     const bodyColumn = document.createElement("div");
     bodyColumn.classList.add("card-body");
 
     
 
-    columna.Tasks.forEach((task) => {
+    column.Tasks.forEach((task) => {
+      // const taskColumnContainer =
+      //   this.#taskComponent.get.#GenerateTaskColumn(task);
       const taskContainer = document.createElement("div");
       taskContainer.classList.add("taskContainer");
       taskContainer.addEventListener("click", () => {

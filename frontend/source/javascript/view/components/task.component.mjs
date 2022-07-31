@@ -2,16 +2,30 @@ export class TaskComponent {
   #containerModalTaskDetails;
   #containerTaskColumn;
 
-  constructor() {
-  }
+  // constructor() {
+  // }
 
-  get() {
-    return this.containerTask;
-  }
+  // get() {
+  //   return this.containerTask;
+  // }
 
-  #GenerateTaskColumn() {
-    
+  #GenerateTaskColumn(task) {
+    const taskContainer = document.createElement("div");
+    taskContainer.classList.add("taskContainer");
+    taskContainer.addEventListener("click", () => {
+      console.log(task.id);
+    });
 
+    const titleTask = document.createElement("p");
+    titleTask.classList.add("task-title");
+    titleTask.textContent = task.title;
+
+    const deliveryTask = document.createElement("p");
+    deliveryTask.classList.add("task-delivery");
+    deliveryTask.textContent = task.deliveryDate;
+    taskContainer.append(titleTask, deliveryTask);
+
+    return taskContainer;
   }
 
 
@@ -57,7 +71,7 @@ export class TaskComponent {
     taskTextContainer.append(titleTask, dateTask, descriptionTask);
 
 
-    this.#containerModalTask = modalContainer;
+    this.#containerModalTaskDetails = modalContainer;
 
   }
 
