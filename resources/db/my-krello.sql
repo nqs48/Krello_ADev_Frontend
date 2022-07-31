@@ -7,7 +7,8 @@ create table krl_board
         primary key,
     brd_name       varchar(100)                         not null,
     brd_created_at datetime default current_timestamp() not null,
-    brd_updated_at datetime                             null
+    brd_updated_at datetime                             null,
+    brd_enable boolean 									not null
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table krl_column
@@ -92,7 +93,7 @@ create index krl_task_clm_id_Idx
 create index krl_task_clm_id_brd_id_Idx
     on krl_task (clm_id_column, brd_id_board);
 
-insert into krl_board (brd_name) values ("Tablero de pruebas");
+insert into krl_board (brd_name,brd_enable) values ("Tablero de pruebas",true);
 insert into krl_column (clm_name)
     values ("Por realizar"), ("En progreso"), ("Terminado");
 insert into krl_column_for_board (brd_id_board, clm_id_column)
