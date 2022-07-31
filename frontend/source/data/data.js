@@ -29,7 +29,7 @@ export const boardObj = [
         tasks: [
           {
             id: 2,
-            title: "Ver video JavaScript",
+            title: "Ver video javascript",
             description: "Ver el primer video de Plataforma",
             createdAt: "15/22/2022 19:00",
             updatedAt: "15/22/2022 19:00",
@@ -98,7 +98,7 @@ export const boardObj = [
         tasks: [
           {
             id: 1,
-            title: "Ver video Pronombres",
+            title: "Ver video pronombres",
             description: "Ver el primer video de Platzi",
             createdAt: "15/22/2022 19:00",
             updatedAt: "15/22/2022 19:00",
@@ -106,7 +106,7 @@ export const boardObj = [
           },
           {
             id: 2,
-            title: "Ver video Verbo To be",
+            title: "Ver video verbo to be",
             description: "Ver el primer video de Platzi",
             createdAt: "15/22/2022 19:00",
             updatedAt: "15/22/2022 19:00",

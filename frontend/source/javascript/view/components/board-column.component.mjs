@@ -32,6 +32,9 @@ export class BoardColumn {
     columna.Tasks.forEach((task) => {
       const taskContainer = document.createElement("div");
       taskContainer.classList.add("taskContainer");
+      taskContainer.addEventListener("click", () => {
+        console.log(task.id)
+      })
 
       const titleTask = document.createElement("p");
       titleTask.classList.add("task-title");
@@ -41,6 +44,7 @@ export class BoardColumn {
       deliveryTask.classList.add("task-delivery");
       deliveryTask.textContent = task.deliveryDate;
       taskContainer.append(titleTask, deliveryTask);
+
       bodyColumn.append(taskContainer);
     });
 

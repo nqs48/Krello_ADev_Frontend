@@ -11,7 +11,12 @@ export class ConfirmationCard {
 
   #GenerateCard() {
     const container = document.createElement("div");
-    container.innerHTML = `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    container.innerHTML = `
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Delete board
+    </button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -28,6 +33,7 @@ export class ConfirmationCard {
         </div>
       </div>
     </div>`;
+
     this.#container = container;
   }
 }

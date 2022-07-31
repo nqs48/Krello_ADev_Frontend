@@ -77,22 +77,30 @@ body{
 
 .taskContainer{
   display: flex;
-  /* line-height: 0.4rem; */
+  line-height: 0.8;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-  background-color: #caf0f8;
-  opacity: 0.8;
-  margin: 0.5rem;
-  padding: 0.1rem 1rem;
-  border-radius: 1rem;
+  background-color: whitesmoke;
+  margin: 0.7rem;
+  padding: 1rem 1rem;
+  padding-bottom: 0rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 0.3rem 0.5rem 0 rgba(0,0,0,0.2);
 
 }
 
+.taskContainer:hover{
+  transform: scale(0.96);
+  box-shadow: 0 0.5rem 1rem 0 rgba(0,0,0,0.2);
+  transition: all 0.4s;
+  color: #000;
+}
+
+
 .task-title{
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: semi-bold;
-  color: black; 
+  color: #16697a;
 }
 
 
