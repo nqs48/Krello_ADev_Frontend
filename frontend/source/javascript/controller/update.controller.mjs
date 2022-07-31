@@ -22,6 +22,18 @@ class UpdateController {
     this.#privateView.Data = await this.#privateMyUsersService.getBoard();
     //console.log(this.#privateView.privateData);
     this.#privateView.init();
+
+    document.addEventListener("click", ()=>{
+      const formName= document.querySelector(".board-name");
+      let valueF=formName.value
+      const data= {
+        name: valueF
+      }
+      // this.#privateMyUsersService.update(this.#privateView.privateData.Id,data);
+      console.log(valueF);
+      console.log(this.#privateView.privateData.Id);
+
+    })
   }
 }
 
