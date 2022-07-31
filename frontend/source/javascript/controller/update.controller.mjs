@@ -22,7 +22,7 @@ class UpdateController {
     console.log(this.#privateMyUsersService.GetStorageBoard());
 
     //Get simulate Data
-    //this.#privateView.Data = this.#privateMyUsersService.SimulateData();
+    this.#privateView.Data = this.#privateMyUsersService.GetStorageBoard();
 
     //console.log(this.#privateView.privateData);
     this.#privateView.init();

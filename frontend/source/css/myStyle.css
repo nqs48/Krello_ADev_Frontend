@@ -1,3 +1,11 @@
+*{
+  margin:0;
+  padding:0;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box
+}
+
+
 body{
   min-height: 100vh;
   background-image: radial-gradient(circle at 4.55% -4.17%, #feffff 0, #efffff 12.5%, #ddfffd 25%, #cafbf7 37.5%, #b5f2f2 50%, #9fe9ee 62.5%, #8ae1ec 75%, #76d9eb 87.5%, #62d1eb 100%);
@@ -26,6 +34,16 @@ body{
   margin-top: 1rem;
 }
 
+.card-title{
+  
+  
+  box-shadow: 0 0.1rem 0.5rem 0 rgba(0,0,0,0.1);
+  color: #16697a;
+  width: 100%;
+  padding: 0.5rem;
+  font-weight: semi-bold;
+}
+
 .cardOwn{
   width: 18rem;
   border-radius: 1rem;
@@ -45,6 +63,48 @@ body{
   transition: all 0.3s;
 }
 
+
+.columnOwn{
+  background-color: white;
+  text-align: center;
+  width: 27%;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  color: #000;
+  margin: 0px;
+}
+
+
+.taskContainer{
+  display: flex;
+  line-height: 0.8;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: whitesmoke;
+  margin: 0.7rem;
+  padding: 1rem 1rem;
+  padding-bottom: 0rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 0.3rem 0.5rem 0 rgba(0,0,0,0.2);
+
+}
+
+.taskContainer:hover{
+  transform: scale(0.96);
+  box-shadow: 0 0.5rem 1rem 0 rgba(0,0,0,0.2);
+  transition: all 0.4s;
+  color: #000;
+}
+
+
+.task-title{
+  font-size: 1.1rem;
+  font-weight: semi-bold;
+  color: #16697a;
+}
+
+
+
 .btn{
   background-color: #caf0f8;
   border-radius: 1rem;
@@ -58,5 +118,45 @@ body{
 }
 
 .imgCardAdd{
-  padding: 4.5rem;
+  padding: 6rem;
+}
+
+
+//Styles for Modal Container Task
+.modal-container{
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.modal{
+  width: 40%;
+  height: 50%;
+  background-color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: relative;
+  transition: transform 1s;
+  transform: translateY(0%);
+
+}
+
+.modal-close{
+  transform: translateY(-200%);
+}
+
+.modal > img {
+  height: 50%;
 }
