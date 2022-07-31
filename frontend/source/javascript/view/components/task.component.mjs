@@ -1,13 +1,20 @@
-export class ModalTask {
-  #containerModalTask;
+export class TaskComponent {
+  #containerModalTaskDetails;
+  #containerTaskColumn;
 
   constructor() {
-    this.#GenerateModalTask();
   }
 
   get() {
     return this.containerTask;
   }
+
+  #GenerateTaskColumn() {
+    
+
+  }
+
+
 
   #GenerateModalTask(data) {
     const modalContainer = document.createElement("div");
@@ -59,6 +66,8 @@ export class ModalTask {
     logText.textContent = log;
     containerFather.appendChild(logText);
   }
+
+
 
   
 

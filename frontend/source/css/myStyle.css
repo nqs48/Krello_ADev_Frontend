@@ -34,6 +34,16 @@ body{
   margin-top: 1rem;
 }
 
+.card-title{
+  
+  
+  box-shadow: 0 0.1rem 0.5rem 0 rgba(0,0,0,0.1);
+  color: #16697a;
+  width: 100%;
+  padding: 0.5rem;
+  font-weight: semi-bold;
+}
+
 .cardOwn{
   width: 18rem;
   border-radius: 1rem;
@@ -55,14 +65,37 @@ body{
 
 
 .columnOwn{
+  background-color: white;
   text-align: center;
   width: 27%;
-  min-height: 35rem;
-  margin: 1rem;
-  border-radius: 1rem;
+  border-radius: 0.3rem;
   text-decoration: none;
   color: #000;
+  margin: 0px;
 }
+
+
+.taskContainer{
+  display: flex;
+  /* line-height: 0.4rem; */
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #caf0f8;
+  opacity: 0.8;
+  margin: 0.5rem;
+  padding: 0.1rem 1rem;
+  border-radius: 1rem;
+
+}
+
+.task-title{
+  font-size: 1.2rem;
+  font-weight: semi-bold;
+  color: black; 
+}
+
+
 
 .btn{
   background-color: #caf0f8;

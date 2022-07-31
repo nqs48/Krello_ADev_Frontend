@@ -57,6 +57,7 @@ export class UpdateView {
       console.log(column)
       
       const columna=colum.GenerateBoardColumn(column);
+      
       this.containerColumn.get().append(columna);
     });
 

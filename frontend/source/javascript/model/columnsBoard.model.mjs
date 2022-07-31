@@ -4,12 +4,14 @@ export class ColumnsForBoard {
   #name;
   #createdAt;
   #updatedAt;
+  #tasks;
 
   constructor(object) {
     this.#id = object.id;
     this.#name = object.name;
     this.#createdAt = object.createdAt;
     this.#updatedAt = object.updatedAt;
+    this.#tasks = object.tasks;
   }
 
   get Id() {
@@ -25,5 +27,9 @@ export class ColumnsForBoard {
 
   get UpdatedAt() {
     return this.#updatedAt;
+  }
+
+  get Tasks() {
+    return this.#tasks;
   }
 }
