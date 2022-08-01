@@ -1,7 +1,7 @@
 "use strict";
 
 // Services
-import { MyUsersService } from "../model/services/my-users.service.mjs";
+import { MyUsersService } from "../model/services/my.krello.service.mjs";
 
 // Views
 import { IndexView } from "../view/index.view.mjs";

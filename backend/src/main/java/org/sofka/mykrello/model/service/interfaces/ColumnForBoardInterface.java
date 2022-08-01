@@ -9,4 +9,5 @@ public interface ColumnForBoardInterface {
     ColumnForBoardDomain getColumnForBoardById(Integer idColumn);
 
     List<TaskDomain> getTasksByColumn(Integer idBoard,Integer idColumn);
+
 }

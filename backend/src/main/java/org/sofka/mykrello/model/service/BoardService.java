@@ -2,7 +2,6 @@ package org.sofka.mykrello.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.sofka.mykrello.model.domain.BoardDomain;
 import org.sofka.mykrello.model.domain.ColumnForBoardDomain;
 import org.sofka.mykrello.model.repository.BoardRepository;
@@ -76,11 +75,10 @@ public class BoardService implements BoardServiceInterface {
         var boardfind = boardRepository.findById(id);
         if(boardfind.isPresent()){
             board.setId(id);
+            board.setCreatedAt(boardfind.get().getCreatedAt());
+            board.setTasksByBoard(boardfind.get().getTasksByBoard());
+            board.setColumnsForBoard(boardfind.get().getColumnsForBoard());
             if(board.getName() == null) board.setName(boardfind.get().getName());
-            if(board.getCreatedAt() == null) board.setCreatedAt(boardfind.get().getCreatedAt());
-            if(board.getUpdatedAt() == null) board.setUpdatedAt(boardfind.get().getUpdatedAt());
-            if(board.getTasksByBoard() == null) board.setTasksByBoard(boardfind.get().getTasksByBoard());
-            if(board.getColumnsForBoard() == null) board.setColumnsForBoard(boardfind.get().getColumnsForBoard());
             if(board.getEnable() == null) board.setEnable(boardfind.get().getEnable());
         }
         return boardRepository.save(board);
@@ -91,20 +89,14 @@ public class BoardService implements BoardServiceInterface {
     public BoardDomain delete(Integer id) {
         var optionalBoard = boardRepository.findById(id);
         if (optionalBoard.isPresent()) {
-//            var board = optionalBoard.get();
-//            var columnsForBoard = board.getColumnsForBoard();
-//            var tasksForboard = board.getTasksByBoard();
-//            if (!columnsForBoard.isEmpty()) {
-//                columnsForBoard.forEach((column) -> {
-//                    columnForBoardRepository.delete(column);
-//                });
-//            }
-//            if(!tasksForboard.isEmpty()){
-//                tasksForboard.forEach((task)->{
-//                    System.out.println(task.getColumnTask());
-//                    taskRepository.delete(task);
-//                });
-//            }
+            var board = optionalBoard.get();
+            var tasksForboard = board.getTasksByBoard();
+            if(!tasksForboard.isEmpty()){
+                tasksForboard.forEach((task)->{
+                    task.setEnable(false);
+                    taskRepository.save(task);
+                });
+            }
             optionalBoard.get().setEnable(false);
             boardRepository.save(optionalBoard.get());
             return optionalBoard.get();

@@ -1,13 +1,12 @@
 "use strict";
 // Services
-import { MyUsersService } from "../model/services/my-users.service.mjs";
+import { MyUsersService } from "../model/services/my.krello.service.mjs";
 
 // Views
 import { UpdateView } from "../view/update.view.mjs";
 
-import { BoardModel } from "../model/board.model.mjs";
-
 class UpdateController {
+  
   #privateView;
   #privateMyUsersService;
 

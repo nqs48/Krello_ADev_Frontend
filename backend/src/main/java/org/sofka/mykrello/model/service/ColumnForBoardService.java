@@ -1,12 +1,10 @@
 package org.sofka.mykrello.model.service;
-
 import org.sofka.mykrello.model.domain.ColumnForBoardDomain;
 import org.sofka.mykrello.model.domain.TaskDomain;
 import org.sofka.mykrello.model.repository.ColumnForBoardRepository;
 import org.sofka.mykrello.model.service.interfaces.ColumnForBoardInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 

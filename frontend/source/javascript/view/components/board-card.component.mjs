@@ -1,3 +1,4 @@
+import { EventServices } from "../../model/services/events.services.mjs";
 import {ConfirmationCard} from "./confirmation-card.component.mjs"
 export class BoardCard {
   #containerAdd;
@@ -46,30 +47,33 @@ export class BoardCard {
   }
 
   GenerateBoardCardAdd() {
-    const component = document.createElement("button");
+    const component = document.createElement("div");
     component.classList.add("card", "cardOwn");
-    component.addEventListener("click", () => {
-      window.open("images/update.html");
-    });
     const img = document.createElement("img");
     img.classList.add("card-img-top", "imgCardAdd");
     img.alt = "Add new board image ";
     img.src = "images/agregar.png";
 
-    const titleCard = document.createElement("h5");
-    titleCard.classList.add("card-title", "Card-add");
-    titleCard.textContent = "Create a new board";
+    const entrada = document.createElement("input");
+    entrada.type = "text";
+    entrada.classList.add("new-board");
+    entrada.placeholder = "Insert new Board"
 
-    component.append(img, titleCard);
+    const buttonNewBoard = document.createElement("button");
+    buttonNewBoard.addEventListener("click", () => {
+       EventServices.insertNewBoard();
+       location.reload();
+    });
+    buttonNewBoard.classList.add("btn", "btn-primary");
+    buttonNewBoard.textContent = "Create a new board";
+
+    component.append(img, entrada,buttonNewBoard);
     return component;
   }
 
   CaptureBoardId(board) {
-    console.log(board);
-    localStorage.setItem("Id_Board", JSON.stringify(board.Id));
 
-    let nameId = board.Id;
-    console.log("Go to board " + nameId);
+    localStorage.setItem("Id_Board", JSON.stringify(board.Id));
   }
 
 }

@@ -27,15 +27,17 @@ export class UpdateView {
 
     const boardColumn = new BoardColumn();
 
+    const columnTitles = ["Por Realizar","En Progreso","Terminado"]
+    let counter = 0;
     this.privateData.ColumnsForBoard.forEach(columnObject => {
-      //console.log(columnObject);
-      const oneColumn = boardColumn.GenerateBoardColumn(columnObject);
+      const oneColumn = boardColumn.GenerateBoardColumn(columnObject,columnTitles[counter]);
       this.containerColumn.get().append(oneColumn);
+      counter += 1;
     });
 
     this.#privateContainer.append(
-      this.#privateNavbar.get(),actionBoardBar,
-      this.containerColumn.get()
+    this.#privateNavbar.get(),actionBoardBar,
+    this.containerColumn.get()
     );
   }
 }

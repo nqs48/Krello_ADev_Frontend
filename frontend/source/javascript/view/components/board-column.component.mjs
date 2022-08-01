@@ -14,7 +14,7 @@ export class BoardColumn {
     return this.#taskComponent;
   }
 
-  GenerateBoardColumn(column) {
+  GenerateBoardColumn(column,title) {
     console.log(column);
     const component = document.createElement("div");
     component.classList.add("columnOwn");
@@ -29,7 +29,7 @@ export class BoardColumn {
 
     const titleColumn = document.createElement("h5");
     titleColumn.classList.add("card-title");
-    titleColumn.textContent = column.Name;
+    titleColumn.textContent = title;
 
     const bodyColumn = document.createElement("div");
     bodyColumn.classList.add("card-body");
@@ -42,7 +42,7 @@ export class BoardColumn {
       const taskContainer = document.createElement("div");
       taskContainer.classList.add("taskContainer");
       taskContainer.addEventListener("click", () => {
-        console.log(task.Id)
+        this.captureTaskdId(task);
       })
 
       const titleTask = document.createElement("p");
@@ -73,6 +73,11 @@ export class BoardColumn {
 
     component.append(titleColumn,bodyColumn);
     return component;
+  }
+
+  captureTaskdId(task) {
+
+    localStorage.setItem("Id_Task", JSON.stringify(task.Id));
   }
 }
 

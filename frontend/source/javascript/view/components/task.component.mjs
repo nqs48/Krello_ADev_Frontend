@@ -1,4 +1,6 @@
 export class TaskComponent {
+
+  
   #containerModalTaskDetails;
   #containerTaskColumn;
 
