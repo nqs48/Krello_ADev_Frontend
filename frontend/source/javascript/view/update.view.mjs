@@ -23,7 +23,7 @@ export class UpdateView {
 
   init() {
     console.log(this.privateData);
-    const actionBoardBar = ActionBar.GenerateBar(this.privateData)
+    const actionBoardBar = ActionBar.GenerateBar(this.privateData);
 
     const boardColumn = new BoardColumn();
 
@@ -35,9 +35,11 @@ export class UpdateView {
       counter += 1;
     });
 
+
     this.#privateContainer.append(
-    this.#privateNavbar.get(),actionBoardBar,
-    this.containerColumn.get()
+      this.#privateNavbar.get(),
+      actionBoardBar,
+      this.containerColumn.get()
     );
   }
 }

@@ -2,24 +2,57 @@ import { Config } from "../../config.mjs";
 import { BoardModel } from "../board.model.mjs";
 
 export class MyUsersService {
+  async getUsers() {
+    const data = await fetch(`${Config.BackendURL}/usuario/records`).then(
+      (response) => response.json()
+    );
+    const users = new Array();
+    data.items.forEach((item) => {
+      const user = new UserModel(item);
+      users.push(user);
+    });
+    return users;
+  }
 
   async getBoards() {
     const result = await fetch(`${Config.BackendURL}/boards`).then((response) =>
       response.json()
     );
     return result.data.map((board) => new BoardModel(board));
-    
   }
- 
+
   async getBoardById(idBoard) {
-    const result = await fetch(`${Config.BackendURL}/board/${idBoard}`).then((response) =>
-                                                                          response.json());
+    const result = await fetch(`${Config.BackendURL}/board/${idBoard}`).then(
+      (response) => response.json()
+    );
 
     const board = new BoardModel(result.data);
-    board.ColumnsForBoard[0].Tasks = await this.getTasksBycolumn(idBoard,board.ColumnsForBoard[0].Id.toString());
-    board.ColumnsForBoard[1].Tasks = await this.getTasksBycolumn(idBoard,board.ColumnsForBoard[1].Id.toString());
-    board.ColumnsForBoard[2].Tasks = await this.getTasksBycolumn(idBoard,board.ColumnsForBoard[2].Id.toString());
+    board.ColumnsForBoard[0].Tasks = await this.getTasksBycolumn(
+      idBoard,
+      board.ColumnsForBoard[0].Id.toString()
+    );
+    board.ColumnsForBoard[1].Tasks = await this.getTasksBycolumn(
+      idBoard,
+      board.ColumnsForBoard[1].Id.toString()
+    );
+    board.ColumnsForBoard[2].Tasks = await this.getTasksBycolumn(
+      idBoard,
+      board.ColumnsForBoard[2].Id.toString()
+    );
     return board;
+  }
+
+  async deleteBoardById(idBoard) {
+    const result = await fetch(`${Config.BackendURL}/board/${idBoard}`,{method: "DELETE"}).then(
+      (response) => response.json()
+    );
+  }
+
+  async getUserById(id) {
+    const data = await fetch(`${Config.BackendURL}/usuario/records/${id}`).then(
+      (response) => response.json()
+    );
+    return new UserModel(data);
   }
 
   async updateBoard(id, data) {
@@ -67,11 +100,11 @@ export class MyUsersService {
     return localStorage.getItem("Id_Task");
   }
 
-  async getTasksBycolumn(idBoard,idColumn){
-    const task = await fetch(`${Config.BackendURL}/tasksbycolumn/${idBoard}/${idColumn}`).then(
-      (response) => response.json()
-    );
+  
+  async getTasksBycolumn(idBoard, idColumn) {
+    const task = await fetch(
+      `${Config.BackendURL}/tasksbycolumn/${idBoard}/${idColumn}`
+    ).then((response) => response.json());
     return task;
-
   }
 }

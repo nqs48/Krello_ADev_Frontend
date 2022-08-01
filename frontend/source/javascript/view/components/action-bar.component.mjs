@@ -15,9 +15,10 @@ export class ActionBar {
     const buttonDelete = document.createElement("button");
     buttonDelete.classList.add("btn", "btn-danger", "btn-bar");
     buttonDelete.textContent = "Delete";
-    buttonDelete.addEventListener("click", function () {
-      console.log("Delete board");
-    });
+
+    // buttonDelete.addEventListener("click", function () {
+    //   console.log("Delete board");
+    // });
 
 
     const insert = document.createElement("input");

@@ -1,17 +1,5 @@
 export class TaskComponent {
-
-  
-  #containerModalTaskDetails;
-  #containerTaskColumn;
-
-  // constructor() {
-  // }
-
-  // get() {
-  //   return this.containerTask;
-  // }
-
-  #GenerateTaskColumn(task) {
+  GenerateTaskColumn(task) {
     const taskContainer = document.createElement("div");
     taskContainer.classList.add("taskContainer");
     taskContainer.addEventListener("click", () => {
@@ -30,63 +18,87 @@ export class TaskComponent {
     return taskContainer;
   }
 
-
-
-  #GenerateModalTask(data) {
-    const modalContainer = document.createElement("div");
-    modalContainer.classList.add("modal-container");
-
+  static GenerateModalTask(task) {
+    //main container
     const modalClose = document.createElement("div");
-    modalClose.classList.add("modal", "modal-close");
-
-    const closeText = document.createElement("p");
-    closeText.classList.add("close");
-    closeText.textContent = "X";
+    modalClose.classList.add("containerDetails");
 
     const imgClose = document.createElement("img");
-    imgClose.classList.add("close");
-    imgClose.src = "#";
+    imgClose.classList.add("img_task");
+    imgClose.src = "images/board.png";
     imgClose.alt = "window background image";
 
     //container texts
     const taskTextContainer = document.createElement("div");
-    taskTextContainer.classList.add("modal-textos");
+    taskTextContainer.classList.add("container_text");
 
     //title task
-    const titleTask = document.createElement("h2");
-    titleTask.classList.add("modal-textos");
-    titleTask.textContent = "Title Task";
+    const titleTask = document.createElement("input");
+    titleTask.classList.add("title_task", "board-name", "input");
+    titleTask.type = "text";
+    titleTask.value = "task.Name";
+  
 
     //date task
-    const dateTask = document.createElement("h3");
-    dateTask.textContent = "11/02/2022 23:00";
+    const dateTask = document.createElement("input");
+    dateTask.classList.add("date_task", "board-name", "input");
+    dateTask.type = "date";
+    dateTask.value = "task.DeliveryDate";
 
     //description Task
-    const descriptionTask = document.createElement("p");
-    descriptionTask.textContent = "This is the description of the task";
+    const descriptionTask = document.createElement("textarea");
+    descriptionTask.classList.add("description_task", "board-name", "input");
+    descriptionTask.textContent = "task.Description";
+
+    //container buttons
+    const comboBoxColumn = document.createElement("select");
+    comboBoxColumn.classList.add(
+      "description_task",
+      "board-name",
+      "comboBoxColumn"
+    );
+
+    const comboBoxColumnOption1 = document.createElement("option");
+    comboBoxColumnOption1.textContent = "task.Column 1";
+
+    const comboBoxColumnOption2 = document.createElement("option");
+    comboBoxColumnOption2.textContent = "task.Column 2";
+
+    const comboBoxColumnOption3 = document.createElement("option");
+    comboBoxColumnOption3.textContent = "task.Column 3";
+
+    comboBoxColumn.append(comboBoxColumnOption1, comboBoxColumnOption2, comboBoxColumnOption3);
+
 
     //container log Task
-    // const containerLogs = document.createElement("div");
-    // data.logs.forEach(log => renderLogs(log,containerLogs))
+    const containerLogs = document.createElement("div");
+    containerLogs.classList.add("container_logs");
+    //data.logs.forEach(log => renderLogs(log,containerLogs))
 
     //Add all texts to containerText without ContainerLogs
-    taskTextContainer.append(titleTask, dateTask, descriptionTask);
+    taskTextContainer.append(
+      titleTask,
+      dateTask,
+      descriptionTask,
+      comboBoxColumn,
+      containerLogs
+    );
 
+    const buttonUpdate = document.createElement("button");
+    buttonUpdate.classList.add("btn", "btn-primary", "btn-task");
+    buttonUpdate.textContent = "Apply";
 
-    this.#containerModalTaskDetails = modalContainer;
+    modalClose.append(imgClose, taskTextContainer, buttonUpdate);
 
+    return modalClose;
   }
 
-  renderLogs(log, containerFather){
+  
+  renderLogs(log, containerFather) {
     const logText = document.createElement("p");
     logText.textContent = log;
     containerFather.appendChild(logText);
   }
 
 
-
-  
-
-
-  
 }
