@@ -43,8 +43,8 @@ export class MyUsersService {
     return new UserModel(data);
   }
 
-  async update(id, data) {
-    await fetch(`${Config.BackendURL}/board/records/${id}`, {
+  async updateBoard(id, data) {
+    await fetch(`${Config.BackendURL}/board/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

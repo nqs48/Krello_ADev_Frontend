@@ -53,6 +53,7 @@ create table krl_task
     tsk_delivery_date datetime                             null,
     tsk_created_at    datetime default current_timestamp() not null,
     tsk_updated_at    datetime                             null,
+    tsk_enable		  boolean 							   not null,
     constraint fk_krl_task_krl_board
         foreign key (brd_id_board) references krl_board (brd_id),
     constraint fk_krl_task_krl_column
@@ -98,8 +99,8 @@ insert into krl_column (clm_name)
     values ("Por realizar"), ("En progreso"), ("Terminado");
 insert into krl_column_for_board (brd_id_board, clm_id_column)
     values (1, 1), (1, 2), (1, 3);
-insert into krl_task (clm_id_column, brd_id_board, tsk_name, tsk_description, tsk_delivery_date)
-    values (2, 1, "Crear el frontend", "Es necesario crear primero el frontend", "2022-07-27 23:59:59"),
-           (1, 1, "Crear el backend del Reto de Programación Web", null, "2022-07-28 23:59:59"),
-           (1, 1, "Realizar las prubas unitarias al backend", null, "2022-07-29 23:59:59"),
-           (3, 1, "Esto es un ejemplo de tarea terminada", null, null);
+insert into krl_task (clm_id_column, brd_id_board, tsk_name, tsk_description, tsk_delivery_date,tsk_enable)
+    values (2, 1, "Crear el frontend", "Es necesario crear primero el frontend", "2022-07-27 23:59:59",true),
+           (1, 1, "Crear el backend del Reto de Programación Web", null, "2022-07-28 23:59:59",true),
+           (1, 1, "Realizar las prubas unitarias al backend", null, "2022-07-29 23:59:59",true),
+           (3, 1, "Esto es un ejemplo de tarea terminada", null, null,true);

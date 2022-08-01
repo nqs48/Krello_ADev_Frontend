@@ -29,7 +29,7 @@ class UpdateController {
       const data= {
         name: valueF
       }
-      // this.#privateMyUsersService.update(this.#privateView.privateData.Id,data);
+      this.#privateMyUsersService.updateBoard(this.#privateView.privateData.Id,data);
       console.log(valueF);
       console.log(this.#privateView.privateData.Id);
 
