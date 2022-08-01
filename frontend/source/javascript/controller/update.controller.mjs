@@ -23,6 +23,7 @@ class UpdateController {
     //console.log(this.#privateView.privateData);
     this.#privateView.init();
 
+    //Event Update board name
     document.addEventListener("click", ()=>{
       const formName= document.querySelector(".board-name");
       let valueF=formName.value
@@ -32,8 +33,21 @@ class UpdateController {
       this.#privateMyUsersService.updateBoard(this.#privateView.privateData.Id,data);
       console.log(valueF);
       console.log(this.#privateView.privateData.Id);
-
     })
+
+    //Event Delete Button
+    const btnDelete = document.querySelector(".btn-bar");
+
+    btnDelete.addEventListener("click", ()=>{
+      console.log("Delete board Id: " + this.#privateView.privateData.Id);
+      this.#privateMyUsersService.deleteBoardById(this.#privateView.privateData.Id);
+      setTimeout(() => {
+        window.location.href = "./index.html";
+      }, 400);
+      
+    }
+
+    )
   }
 }
 

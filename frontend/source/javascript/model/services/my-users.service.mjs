@@ -4,7 +4,6 @@ import { UserModel } from "../user.model.mjs";
 import{ boardObj } from "../../../data/data.js";
 
 export class MyUsersService {
-
   async getUsers() {
     const data = await fetch(`${Config.BackendURL}/usuario/records`).then(
       (response) => response.json()
@@ -22,18 +21,33 @@ export class MyUsersService {
       response.json()
     );
     return result.data.map((board) => new BoardModel(board));
-    
   }
- 
+
   async getBoardById(idBoard) {
-    const result = await fetch(`${Config.BackendURL}/board/${idBoard}`).then((response) =>
-                                                                          response.json());
+    const result = await fetch(`${Config.BackendURL}/board/${idBoard}`).then(
+      (response) => response.json()
+    );
 
     const board = new BoardModel(result.data);
-    board.ColumnsForBoard[0].Tasks = await this.getTasksBycolumn(idBoard,board.ColumnsForBoard[0].Id.toString());
-    board.ColumnsForBoard[1].Tasks = await this.getTasksBycolumn(idBoard,board.ColumnsForBoard[1].Id.toString());
-    board.ColumnsForBoard[2].Tasks = await this.getTasksBycolumn(idBoard,board.ColumnsForBoard[2].Id.toString());
+    board.ColumnsForBoard[0].Tasks = await this.getTasksBycolumn(
+      idBoard,
+      board.ColumnsForBoard[0].Id.toString()
+    );
+    board.ColumnsForBoard[1].Tasks = await this.getTasksBycolumn(
+      idBoard,
+      board.ColumnsForBoard[1].Id.toString()
+    );
+    board.ColumnsForBoard[2].Tasks = await this.getTasksBycolumn(
+      idBoard,
+      board.ColumnsForBoard[2].Id.toString()
+    );
     return board;
+  }
+
+  async deleteBoardById(idBoard) {
+    const result = await fetch(`${Config.BackendURL}/board/${idBoard}`,{method: "DELETE"}).then(
+      (response) => response.json()
+    );
   }
 
   async getUserById(id) {
@@ -66,11 +80,10 @@ export class MyUsersService {
     return this.getBoardById(id);
   }
 
-  async getTasksBycolumn(idBoard,idColumn){
-    const task = await fetch(`${Config.BackendURL}/tasksbycolumn/${idBoard}/${idColumn}`).then(
-      (response) => response.json()
-    );
+  async getTasksBycolumn(idBoard, idColumn) {
+    const task = await fetch(
+      `${Config.BackendURL}/tasksbycolumn/${idBoard}/${idColumn}`
+    ).then((response) => response.json());
     return task;
-
   }
 }
