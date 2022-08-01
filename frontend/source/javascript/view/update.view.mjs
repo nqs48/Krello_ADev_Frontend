@@ -23,18 +23,21 @@ export class UpdateView {
 
   init() {
     console.log(this.privateData);
-    const actionBoardBar = ActionBar.GenerateBar(this.privateData)
+    const actionBoardBar = ActionBar.GenerateBar(this.privateData);
 
     const boardColumn = new BoardColumn();
 
-    this.privateData.ColumnsForBoard.forEach(columnObject => {
+    this.privateData.ColumnsForBoard.forEach((columnObject) => {
       //console.log(columnObject);
       const oneColumn = boardColumn.GenerateBoardColumn(columnObject);
       this.containerColumn.get().append(oneColumn);
     });
 
+    
+
     this.#privateContainer.append(
-      this.#privateNavbar.get(),actionBoardBar,
+      this.#privateNavbar.get(),
+      actionBoardBar,
       this.containerColumn.get()
     );
   }

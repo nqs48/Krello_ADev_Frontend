@@ -164,41 +164,70 @@ body{
 }
 
 
-//Styles for Modal Container Task
-.modal-container{
-  opacity: 0;
-  visibility: hidden;
-  position: fixed;
-  z-index: 1000;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0
-  background-color: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-
-.modal{
-  width: 40%;
-  height: 50%;
-  background-color: #fff;
-  text-align: center;
+.containerDetails{
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  position: relative;
-  transition: transform 1s;
-  transform: translateY(0%);
-
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: 100%;
+  background-color: #76d9eb;
+  margin: 4rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  
 }
 
-.modal-close{
-  transform: translateY(-200%);
+.img_task {
+  width: 60%;
+  margin: 1rem auto;
 }
 
-.modal > img {
-  height: 50%;
+.container_text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 80%;
+  height: 100%;
+  background-color: #caf0f8;
+  padding: 1rem;
+  border-radius: 1rem;
+  
 }
+
+.title_task{
+  align-items: center
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 50%;
+  margin: 0.4rem; 
+}
+
+.date_task{
+  margin-bottom: 0.4rem; 
+  width: 50%;
+  font-size: 1.1rem;
+}
+
+.description_task{
+  margin-bottom: 0.4rem;
+  min-width: 50%;
+  font-size: 1.1rem;
+  color: #023047;
+}
+
+.input:hover{
+  background-color:#76d9eb;
+  
+}
+
+.btn-task{
+  margin-top: 0.4rem;
+  background-color: #caf0f8;
+}
+
+
+
+

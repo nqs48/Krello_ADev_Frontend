@@ -67,9 +67,9 @@ export class MyUsersService {
     }).then((response) => response.json());
   }
 
-  SimulateData() {
-    return boardObj.map((board) => new BoardModel(board));
-  }
+  // SimulateData() {
+  //   return boardObj.map((board) => new BoardModel(board));
+  // }
 
   // SimulateDataColumns(board) {
   //   return board.columnsForBoard.map((column) => new ColumnsBoardModel(column));
