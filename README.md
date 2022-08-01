@@ -22,7 +22,7 @@ Responsive design of a dynamic web page, where you can manage activities and tas
 
 ### UI Index Web Page
 
-Responsive design of a dynamic web page with the avalable boards.
+Responsive design of a dynamic web page with the available boards.
 
 ![image](https://res.cloudinary.com/adev48/image/upload/v1659336926/Sofka%20Assets/Training%20Leagues/API%20SpringBoot-JavaScript/GetBoards_y7rgjz.png)
 
@@ -33,16 +33,9 @@ Responsive design of a dynamic web page with the avalable boards.
 
 ### Form to create board
 
-Game creation with a name field, and event control. 
+Board and task creation with a name field, and event control. 
 
 ![image]()
-
-### Form Validation
-
-Form validation with required fields.
-
-![image]()
-
 
 ---
 
@@ -128,7 +121,15 @@ Install each one the pieces of software previously mentioned.
    
    ```
    
-4. Configure your connection string at aplication properties file.
+4. Configure your datasource, user and password in aplication properties file.
+
+   ```
+    spring.datasource.url=jdbc:mysql://localhost:{yourPort}/{yourDatabase}
+    
+    spring.datasource.username={yourUser}
+    
+    spring.datasource.password={yourPassword}
+   ```
 
    
 5. Run the project with te IDE.
