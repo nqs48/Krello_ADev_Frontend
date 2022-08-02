@@ -47,7 +47,10 @@ export class MyUsersService {
 
     await fetch(`${Config.BackendURL}/board/${this.getBoardLocalStorage()}`,{method: "DELETE"}).then(
       (response) => response.json())
-      .then(response => location.href ="/source/index.html");
+      .then(response => {
+        //location.href ="/source/index.html"
+        location.href = "index.html";
+      });
   }
 
   async getUserById(id) {

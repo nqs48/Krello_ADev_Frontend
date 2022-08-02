@@ -36,7 +36,6 @@ body{
 
 .card-title{
   
-  
   box-shadow: 0 0.1rem 0.5rem 0 rgba(0,0,0,0.1);
   color: #16697a;
   width: 100%;
@@ -61,6 +60,10 @@ body{
 }
 
 .cardOwn{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   width: 18rem;
   border-radius: 1rem;
   text-decoration: none;
@@ -85,6 +88,8 @@ body{
   padding: 1rem;
 }
 
+
+
 .board-name{
   width: 30%;
   font-size: 1.5rem;
@@ -99,8 +104,23 @@ body{
   transition: all 0.3s;
 }
 
-.board-name:active{
+/* .board-name:active{
   border: 2px solid black;
+} */
+
+.new-board{
+  width: 80%;
+  font-size: 1.5rem;
+  color: #fff;
+  background-color:#caf0f8;
+  margin: 0.5rem 0;
+}
+
+.new-board::placeholder {
+  color: #16697a;
+  font-size:1.2rem;
+  font-weight: normal;
+  text-align: center;
 }
 
 
@@ -146,9 +166,9 @@ body{
 
 
 .btn{
-  background-color: #caf0f8;
-  border-radius: 1rem;
-  color: #000;
+  background-color: #16697a;
+  border-radius: 0.5rem;
+  color: red;
   padding: 0.5rem;
   font-size: 1rem;
   font-weight: bold;

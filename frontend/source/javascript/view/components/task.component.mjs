@@ -77,7 +77,11 @@ export class TaskComponent {
     //container log Task
     const containerLogs = document.createElement("div");
     containerLogs.classList.add("container_logs");
-    //data.logs.forEach(log => renderLogs(log,containerLogs))
+    task.Logs.forEach((log) => {
+        const logText = document.createElement("p");
+        logText.textContent = log.createdAt;
+        containerLogs.append(logText);
+    });
 
     //Add all texts to containerText without ContainerLogs
     taskTextContainer.append(
@@ -93,7 +97,8 @@ export class TaskComponent {
     buttonUpdate.textContent = "Apply";
     buttonUpdate.addEventListener("click",()=>{
       EventServices.updateTask();
-      location.href ="/source/update.html";
+      //location.href ="/source/update.html";
+      location.href = "update.html";
     });
 
     modalClose.append(imgClose, taskTextContainer, buttonUpdate);
@@ -101,11 +106,11 @@ export class TaskComponent {
   }
 
   
-  renderLogs(log, containerFather) {
-    const logText = document.createElement("p");
-    logText.textContent = log;
-    containerFather.appendChild(logText);
-  }
+  // renderLogs(log, containerFather) {
+  //   const logText = document.createElement("p");
+  //   logText.textContent = log;
+  //   containerFather.appendChild(logText);
+  // }
 
 
 }

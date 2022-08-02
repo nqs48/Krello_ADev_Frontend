@@ -57,7 +57,7 @@ export class BoardCard {
 
     const entrada = document.createElement("input");
     entrada.type = "text";
-    entrada.classList.add("new-board");
+    entrada.classList.add("new-board", "board-name");
     entrada.placeholder = "Insert new Board"
 
     const buttonNewBoard = document.createElement("button");
@@ -66,7 +66,7 @@ export class BoardCard {
        location.reload();
     });
     buttonNewBoard.classList.add("btn", "btn-primary");
-    buttonNewBoard.textContent = "Create a new board";
+    buttonNewBoard.textContent = "Create";
 
     component.append(img, entrada,buttonNewBoard);
     return component;
