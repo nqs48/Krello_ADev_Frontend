@@ -5,6 +5,6 @@ import java.util.List;
 import org.sofka.mykrello.model.domain.LogDomain;
 
 public interface LogServiceInterface {
-    public List<LogDomain> findById(Integer id);
+    List<LogDomain> findByIdTask(Integer idTask);
     public LogDomain create(LogDomain log);
 }

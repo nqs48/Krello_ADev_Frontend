@@ -55,5 +55,9 @@ export class EventServices {
       this.#privateMyUsersService.deleteBoardById();
     }
 
+    static borrarTarea(){
+      this.#privateMyUsersService.deleteTaskById();
+    }
+
 
 }

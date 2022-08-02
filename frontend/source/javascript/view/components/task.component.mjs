@@ -101,7 +101,43 @@ export class TaskComponent {
       location.href = "update.html";
     });
 
-    modalClose.append(imgClose, taskTextContainer, buttonUpdate);
+    const botonBorrado = document.createElement("button");
+      botonBorrado.textContent = "Delete Task";
+      botonBorrado.classList.add("btn","btn-danger");
+      botonBorrado.addEventListener("click",()=>{
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+        })
+        
+        swalWithBootstrapButtons.fire({
+          title: '¿Está seguro que desea borrar la tarea?',
+          text: "Esta acción no se puede revertir!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'No, cancel!',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.isConfirmed) {
+            EventServices.borrarTarea();
+  
+          } else if (
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            swalWithBootstrapButtons.fire(
+              'Cancelled',
+              'Your imaginary file is safe :)',
+              'error'
+            )
+          }
+        })
+      });
+
+    modalClose.append(imgClose, taskTextContainer, buttonUpdate,botonBorrado);
     return modalClose;
   }
 
