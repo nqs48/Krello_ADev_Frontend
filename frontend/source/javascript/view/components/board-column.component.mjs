@@ -1,3 +1,4 @@
+import { EventServices } from "../../model/services/events.services.mjs";
 import {TaskComponent} from "./task.component.mjs";
 
 export class BoardColumn {
@@ -23,6 +24,7 @@ export class BoardColumn {
     bodyColumn.classList.add("card-body");
 
     column.Tasks.forEach((task) => {
+      
       const taskContainer = document.createElement("div");
       taskContainer.classList.add("taskContainer");
       taskContainer.addEventListener("click", () => {
@@ -41,6 +43,7 @@ export class BoardColumn {
       deliveryTask.textContent = task.DeliveryDate;
       taskContainer.append(titleTask, deliveryTask);
       bodyColumn.append(taskContainer);
+
     });
 
     component.append(titleColumn, bodyColumn);
