@@ -2,6 +2,7 @@ package org.sofka.mykrello.model.domain;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -57,7 +58,7 @@ public class TaskDomain implements Serializable {
     private String descriptionTask;
 
     @Column(name ="tsk_delivery_date")
-    private Instant deliveryTask;
+    private Date deliveryTask;
 
     @Column(name = "tsk_created_at", nullable = false, updatable = false)
     private Instant createdAtTask = Instant.now();

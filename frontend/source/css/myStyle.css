@@ -198,7 +198,7 @@ body{
 }
 
 .title_task{
-  align-items: center
+  align-items: center;
   font-size: 1.2rem;
   font-weight: bold;
   width: 50%;

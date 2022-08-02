@@ -79,7 +79,7 @@ public class BoardService implements BoardServiceInterface {
             board.setTasksByBoard(boardfind.get().getTasksByBoard());
             board.setColumnsForBoard(boardfind.get().getColumnsForBoard());
             if(board.getName() == null) board.setName(boardfind.get().getName());
-            if(board.getEnable() == null) board.setEnable(boardfind.get().getEnable());
+            board.setEnable(true);
         }
         return boardRepository.save(board);
     }

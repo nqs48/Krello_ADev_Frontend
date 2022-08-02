@@ -1,5 +1,6 @@
 import { Config } from "../../config.mjs";
 import { BoardModel } from "../board.model.mjs";
+import { TaskModel } from "../task.model.mjs";
 
 export class MyUsersService {
   async getUsers() {
@@ -25,7 +26,7 @@ export class MyUsersService {
     const result = await fetch(`${Config.BackendURL}/board/${idBoard}`).then(
       (response) => response.json()
     );
-
+    console.log(result);
     const board = new BoardModel(result.data);
     board.ColumnsForBoard[0].Tasks = await this.getTasksBycolumn(
       idBoard,
@@ -42,10 +43,11 @@ export class MyUsersService {
     return board;
   }
 
-  async deleteBoardById(idBoard) {
-    const result = await fetch(`${Config.BackendURL}/board/${idBoard}`,{method: "DELETE"}).then(
-      (response) => response.json()
-    );
+  async deleteBoardById() {
+
+    await fetch(`${Config.BackendURL}/board/${this.getBoardLocalStorage()}`,{method: "DELETE"}).then(
+      (response) => response.json())
+      .then(response => location.href ="/source/index.html");
   }
 
   async getUserById(id) {
@@ -55,8 +57,8 @@ export class MyUsersService {
     return new UserModel(data);
   }
 
-  async updateBoard(id, data) {
-    await fetch(`${Config.BackendURL}/board/${id}`, {
+  async updateBoard(data) {
+    await fetch(`${Config.BackendURL}/board/${this.getBoardLocalStorage()}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -69,24 +71,41 @@ export class MyUsersService {
   async insertNewTask(data){
 
     data.boardTask = {id: localStorage.getItem("Id_Board")}
-    await fetch(`${Config.BackendURL}/task/`, {
+    await fetch(`${Config.BackendURL}/task`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
-    }).then((response) => response.json());
+      body: JSON.stringify(data)
+    }).then(response => response.json())
+      .then(response => console.log('Success:', response));
   }
 
-  async insertNewBoard(data){
-    
-    await fetch(`${Config.BackendURL}/board/`, {
-      method: "POST",
+  async updateTask(data){
+    let id = this.getIdTask();
+    const dat = await fetch(`${Config.BackendURL}/task/${id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    }).then((response) => response.json());
+    }).then((response) => response.json())
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
+  }
+
+
+  async insertNewBoard(data){
+    await fetch(`${Config.BackendURL}/board`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data)
+    }).then((response) => response.json())
+      .then(response => console.log('Success:', response))
+      .catch(error => console.error('Error:', error));
+      
   }
   
 
@@ -95,6 +114,17 @@ export class MyUsersService {
     return this.getBoardById(id);
   }
 
+  getBoardLocalStorage() {
+    return localStorage.getItem("Id_Board");
+  }
+
+  async getTaskById(){
+    let id = this.getIdTask();
+    const result = await fetch(`${Config.BackendURL}/task/${id}`).then(
+      (response) => response.json()
+    );
+    return new TaskModel(result.data);
+  }
 
   getIdTask(){
     return localStorage.getItem("Id_Task");
@@ -102,9 +132,9 @@ export class MyUsersService {
 
   
   async getTasksBycolumn(idBoard, idColumn) {
-    const task = await fetch(
-      `${Config.BackendURL}/tasksbycolumn/${idBoard}/${idColumn}`
-    ).then((response) => response.json());
+    const task = await fetch(`${Config.BackendURL}/tasksbycolumn/${idBoard}/${idColumn}`).then(
+      (response) => response.json()
+    );
     return task;
   }
 }

@@ -15,15 +15,6 @@ export class BoardColumn {
     console.log(column);
     const component = document.createElement("div");
     component.classList.add("columnOwn");
-    // component.addEventListener("click", () => {
-    //   this.CaptureBoardId(board);
-    // });
-
-    // const img = document.createElement("img");
-    // img.classList.add("card-img-top");
-    // img.alt = "Board background image";
-    // img.src = "../../../images/board.png";
-
     const titleColumn = document.createElement("h5");
     titleColumn.classList.add("card-title");
     titleColumn.textContent = title;
@@ -49,7 +40,6 @@ export class BoardColumn {
       deliveryTask.classList.add("task-delivery");
       deliveryTask.textContent = task.DeliveryDate;
       taskContainer.append(titleTask, deliveryTask);
-
       bodyColumn.append(taskContainer);
     });
 

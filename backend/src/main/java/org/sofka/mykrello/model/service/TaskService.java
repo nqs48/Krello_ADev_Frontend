@@ -66,7 +66,8 @@ public class TaskService implements TaskServiceInterface {
         if(task.getNameTask()==null) task.setNameTask(currentTask.get().getNameTask());
         if(task.getDeliveryTask()==null) task.setDeliveryTask(currentTask.get().getDeliveryTask());
         if(task.getDescriptionTask()==null) task.setDescriptionTask(currentTask.get().getDescriptionTask());
-        task.setColumnTask(columnService.findById(idColumnCurrent));
+        task.setEnable(currentTask.get().getEnable());
+        if(task.getColumnTask() == null)task.setColumnTask(columnService.findById(idColumnCurrent));
         task.setUpdatedAtTask(Instant.now());
 
         logDomain.setTask(currentTask.get());

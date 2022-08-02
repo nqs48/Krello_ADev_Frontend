@@ -1,18 +1,20 @@
+import { EventServices } from "../../model/services/events.services.mjs";
+
 export class TaskComponent {
   GenerateTaskColumn(task) {
     const taskContainer = document.createElement("div");
     taskContainer.classList.add("taskContainer");
     taskContainer.addEventListener("click", () => {
-      console.log(task.id);
+      console.log(task.Id);
     });
 
     const titleTask = document.createElement("p");
     titleTask.classList.add("task-title");
-    titleTask.textContent = task.title;
+    titleTask.textContent = task.Name;
 
     const deliveryTask = document.createElement("p");
     deliveryTask.classList.add("task-delivery");
-    deliveryTask.textContent = task.deliveryDate;
+    deliveryTask.textContent = task.DeliveryDate;
     taskContainer.append(titleTask, deliveryTask);
 
     return taskContainer;
@@ -20,6 +22,7 @@ export class TaskComponent {
 
   static GenerateModalTask(task) {
     //main container
+    console.log(task);
     const modalClose = document.createElement("div");
     modalClose.classList.add("containerDetails");
 
@@ -36,36 +39,37 @@ export class TaskComponent {
     const titleTask = document.createElement("input");
     titleTask.classList.add("title_task", "board-name", "input");
     titleTask.type = "text";
-    titleTask.value = "task.Name";
+    titleTask.value = task.Name;
   
 
     //date task
     const dateTask = document.createElement("input");
     dateTask.classList.add("date_task", "board-name", "input");
     dateTask.type = "date";
-    dateTask.value = "task.DeliveryDate";
+    dateTask.value = task.DeliveryDate;
 
     //description Task
     const descriptionTask = document.createElement("textarea");
     descriptionTask.classList.add("description_task", "board-name", "input");
-    descriptionTask.textContent = "task.Description";
+    descriptionTask.textContent = task.Description;
 
     //container buttons
     const comboBoxColumn = document.createElement("select");
     comboBoxColumn.classList.add(
-      "description_task",
-      "board-name",
-      "comboBoxColumn"
+      "column"
     );
 
     const comboBoxColumnOption1 = document.createElement("option");
-    comboBoxColumnOption1.textContent = "task.Column 1";
-
+    comboBoxColumnOption1.textContent = "Por Realizar";
+    comboBoxColumnOption1.value = "1";
+    
     const comboBoxColumnOption2 = document.createElement("option");
-    comboBoxColumnOption2.textContent = "task.Column 2";
+    comboBoxColumnOption2.textContent = "En Progreso";
+    comboBoxColumnOption2.value = "2";
 
     const comboBoxColumnOption3 = document.createElement("option");
-    comboBoxColumnOption3.textContent = "task.Column 3";
+    comboBoxColumnOption3.textContent = "Terminado";
+    comboBoxColumnOption3.value = "3";
 
     comboBoxColumn.append(comboBoxColumnOption1, comboBoxColumnOption2, comboBoxColumnOption3);
 
@@ -87,9 +91,12 @@ export class TaskComponent {
     const buttonUpdate = document.createElement("button");
     buttonUpdate.classList.add("btn", "btn-primary", "btn-task");
     buttonUpdate.textContent = "Apply";
+    buttonUpdate.addEventListener("click",()=>{
+      EventServices.updateTask();
+      location.href ="/source/update.html";
+    });
 
     modalClose.append(imgClose, taskTextContainer, buttonUpdate);
-
     return modalClose;
   }
 

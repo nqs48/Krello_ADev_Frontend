@@ -1,12 +1,8 @@
 "use strict";
-
 // Services
 import { MyUsersService } from "../model/services/my.krello.service.mjs";
-
 // Views
 import { IndexView } from "../view/index.view.mjs";
-
-import { BoardModel } from "../model/board.model.mjs" 
 
 class IndexController {
     #privateView;
@@ -18,16 +14,19 @@ class IndexController {
     }
 
     async init() {
-      
-
-
-        //this.#privateView.Data = await this.#privateMyUsersService.getBoard();
-        
-        //Get simulate Data      
+         
         this.#privateView.Data= await this.#privateMyUsersService.getBoards();
-        
         console.log(this.#privateView.privateData);
         this.#privateView.init();
+    }
+
+    agregarTablero(){
+        const boardName= document.querySelector(".new-board");
+        let valueBoardName = boardName.value
+        const data= {
+          name: valueBoardName
+        }
+        this.#privateMyUsersService.insertNewBoard(data);
     }
 }
 

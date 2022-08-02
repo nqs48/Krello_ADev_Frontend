@@ -23,7 +23,6 @@ public class TaskController {
     private MyResponseUtility response;
     @Autowired
     private TaskService taskService;
-
     @Autowired
     private ColumnForBoardService columnForBoardService;
 
@@ -39,6 +38,12 @@ public class TaskController {
     public ResponseEntity<MyResponseUtility> putTask(@PathVariable(value = "id") Integer id,
                                                  @RequestBody TaskDomain task) {
         response.data = taskService.update(id, task);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping (path = "/api/v1/task/{id}")
+    public ResponseEntity<MyResponseUtility> putTask(@PathVariable(value = "id") Integer id) {
+        response.data = taskService.findById(id);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 

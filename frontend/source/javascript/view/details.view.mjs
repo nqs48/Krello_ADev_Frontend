@@ -22,8 +22,8 @@ export class DetailsView {
   }
 
   init() {
-    console.log(this.privateData.ColumnsForBoard);
-    const taskDt=TaskComponent.GenerateModalTask("v");
+    console.log(this.privateData);
+    const taskDt=TaskComponent.GenerateModalTask(this.privateData);
     // const actionBoardBar = ActionBar.GenerateBar(this.privateData);
 
     // const boardColumn = new BoardColumn();
@@ -41,10 +41,5 @@ export class DetailsView {
       this.containerDetailsTask.get()
     );
 
-
-    const btnApply=document.querySelector(".btn-task");
-    btnApply.addEventListener("click",()=>{
-      console.log("Update");
-    })
   }
 }

@@ -41,6 +41,7 @@ export class BoardCard {
     const textCard = document.createElement("p");
     textCard.classList.add("card-text");
     textCard.textContent = board.CreatedAt;
+    
     bodyCard.append(titleCard, textCard);
     component.append(img, bodyCard);
     return component;
@@ -61,7 +62,7 @@ export class BoardCard {
 
     const buttonNewBoard = document.createElement("button");
     buttonNewBoard.addEventListener("click", () => {
-       EventServices.insertNewBoard();
+       EventServices.ingresarTablero();
        location.reload();
     });
     buttonNewBoard.classList.add("btn", "btn-primary");

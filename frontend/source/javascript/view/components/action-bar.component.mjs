@@ -15,10 +15,38 @@ export class ActionBar {
     const buttonDelete = document.createElement("button");
     buttonDelete.classList.add("btn", "btn-danger", "btn-bar");
     buttonDelete.textContent = "Delete";
+    buttonDelete.addEventListener("click", () => {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: '¿Está seguro que desea borrar el tablero?',
+        text: "Esta acción no se puede revertir!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          EventServices.borrarTablero();
 
-    // buttonDelete.addEventListener("click", function () {
-    //   console.log("Delete board");
-    // });
+        } else if (
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Cancelled',
+            'Your imaginary file is safe :)',
+            'error'
+          )
+        }
+      })
+    });
 
 
     const insert = document.createElement("input");
@@ -26,12 +54,11 @@ export class ActionBar {
     insert.type = "text";
     insert.placeholder = "Ingrese nombre de la tarea";
 
-    const buttonAdd = document.createElement("input");
+    const buttonAdd = document.createElement("button");
     buttonAdd.classList.add("btn", "btn-primary", "btn-bar");
-    buttonAdd.value = "Add New task";
-    buttonAdd.type = "submit";
+    buttonAdd.textContent = "Add New task";
     buttonAdd.addEventListener("click", function () {
-            EventServices.insertNewTask();
+            EventServices.ingresarTarea();
             location.reload();
         });
     //Asignando elementos a contenedor
