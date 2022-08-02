@@ -73,14 +73,23 @@ public class ColumnDomain implements Serializable {
     @JsonBackReference(value = "logPrevious")
     private List<LogDomain> logPrevious = new ArrayList<>();
 
+    /**
+     * Punto de enlace entre la entidad de Columna y Logs actuales (una Columna puede tener muchos Logs actuales)
+     */
     @OneToMany(fetch = FetchType.LAZY, targetEntity = LogDomain.class, cascade = CascadeType.ALL, mappedBy = "current")
     @JsonBackReference(value = "logCurrent")
     private List<LogDomain> logCurrent = new ArrayList<>();
 
+    /**
+     * Punto de enlace entre la entidad de Columna y columnas por tablero (una Columna puede tener muchos columnas por tablero)
+     */
     @OneToMany(fetch = FetchType.LAZY, targetEntity = ColumnForBoardDomain.class, cascade = CascadeType.ALL, mappedBy = "column")
     @JsonManagedReference(value = "columnBoard")
     private List<ColumnForBoardDomain> columnForBoardsDetail = new ArrayList<>();
 
+    /**
+     * Punto de enlace entre la entidad de Columna y tareas (una Columna puede tener muchas tareas)
+     */
     @OneToMany(fetch = FetchType.LAZY,targetEntity = TaskDomain.class,mappedBy = "columnTask",cascade = CascadeType.ALL)
     @JsonManagedReference(value = "task-by-column")
     private List<TaskDomain> tasksByColumn = new ArrayList<>();
