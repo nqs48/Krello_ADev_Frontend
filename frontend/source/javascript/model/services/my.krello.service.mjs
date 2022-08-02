@@ -47,14 +47,14 @@ export class MyUsersService {
 
     await fetch(`${Config.BackendURL}/board/${this.getBoardLocalStorage()}`,{method: "DELETE"}).then(
       (response) => response.json())
-      .then(() => location.href ="/source/index.html");
+      .then(() => location.href ="index.html");
   }
 
   async deleteTaskById() {
 
     await fetch(`${Config.BackendURL}/task/${this.getIdTask()}`,{method: "DELETE"}).then(
       (response) => response.json())
-      .then(() => location.href ="/source/update.html");
+      .then(() => location.href ="update.html");
   }
 
   async getUserById(id) {

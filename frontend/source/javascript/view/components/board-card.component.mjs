@@ -65,7 +65,7 @@ export class BoardCard {
        EventServices.ingresarTablero();
        location.reload();
     });
-    buttonNewBoard.classList.add("btn", "btn-primary");
+    buttonNewBoard.classList.add("btn", "btn-outline-info");
     buttonNewBoard.textContent = "Create";
 
     component.append(img, entrada,buttonNewBoard);

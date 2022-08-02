@@ -8,11 +8,14 @@
 
 body{
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-image: radial-gradient(circle at 4.55% -4.17%, #feffff 0, #efffff 12.5%, #ddfffd 25%, #cafbf7 37.5%, #b5f2f2 50%, #9fe9ee 62.5%, #8ae1ec 75%, #76d9eb 87.5%, #62d1eb 100%);
 }
 
 .container {
-  
+
   width: 100vw;
  
 } 
@@ -23,7 +26,7 @@ body{
   flex-wrap: wrap;
   background-color: #caf0f8;
   opacity: 0.8;
-  margin: 5rem;
+  margin: 5rem auto;
   padding: 1rem;
   border-radius: 1rem;
   visibility: visible;
@@ -89,11 +92,10 @@ body{
 }
 
 
-
 .board-name{
   width: 30%;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: semi-bold;
   color: #16697a;
   background-color: transparent;
   border: 2px solid transparent;
@@ -104,14 +106,13 @@ body{
   transition: all 0.3s;
 }
 
-/* .board-name:active{
-  border: 2px solid black;
-} */
 
 .new-board{
   width: 80%;
-  font-size: 1.5rem;
-  color: #fff;
+  font-size:1.2rem;
+  font-weight: normal;
+  padding: 0.2rem 0.5rem;
+  color: #16697a;
   background-color:#caf0f8;
   margin: 0.5rem 0;
 }
@@ -161,21 +162,9 @@ body{
   font-size: 1.1rem;
   font-weight: semi-bold;
   color: #16697a;
+
 }
 
-
-
-.btn{
-  background-color: #16697a;
-  border-radius: 0.5rem;
-  color: red;
-  padding: 0.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: all 0.4s;
-}
 
 .imgCardAdd{
   padding: 0rem 6rem;
@@ -247,6 +236,19 @@ body{
   margin-top: 0.4rem;
   background-color: #caf0f8;
 }
+
+.btn-outline-info{
+  color: #16697a;
+}
+
+.btn-outline-info:hover{
+  color: white;
+  background-color:#8ae1ec;
+}
+
+
+
+
 
 
 

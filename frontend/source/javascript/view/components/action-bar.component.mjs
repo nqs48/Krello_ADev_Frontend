@@ -13,7 +13,7 @@ export class ActionBar {
     boardName.value = board.Name;
     
     const buttonDelete = document.createElement("button");
-    buttonDelete.classList.add("btn", "btn-danger", "btn-bar");
+    buttonDelete.classList.add("btn", "btn-outline-danger", "btn-bar");
     buttonDelete.textContent = "Delete";
     buttonDelete.addEventListener("click", () => {
       const swalWithBootstrapButtons = Swal.mixin({
@@ -55,14 +55,14 @@ export class ActionBar {
     insert.placeholder = "Ingrese nombre de la tarea";
 
     const buttonAdd = document.createElement("button");
-    buttonAdd.classList.add("btn", "btn-primary", "btn-bar");
+    buttonAdd.classList.add("btn", "btn-outline-info" ,"btn-bar");
     buttonAdd.textContent = "Add New task";
     buttonAdd.addEventListener("click", function () {
             EventServices.ingresarTarea();
             location.reload();
         });
     //Asignando elementos a contenedor
-    actionBoardBar.append(boardName,insert,buttonAdd,buttonDelete);
+    actionBoardBar.append(boardName, insert, buttonAdd, buttonDelete);
 
     return actionBoardBar;
   }
