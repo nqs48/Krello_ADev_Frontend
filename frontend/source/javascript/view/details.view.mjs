@@ -22,8 +22,9 @@ export class DetailsView {
   }
 
   init() {
+    this.getColorLocalStorage();
     console.log(this.privateData);
-    const taskDt=TaskComponent.GenerateModalTask(this.privateData);
+    const taskDt = TaskComponent.GenerateModalTask(this.privateData);
     // const actionBoardBar = ActionBar.GenerateBar(this.privateData);
 
     // const boardColumn = new BoardColumn();
@@ -33,13 +34,18 @@ export class DetailsView {
     //   const oneColumn = boardColumn.GenerateBoardColumn(columnObject);
     //   this.containerColumn.get().append(oneColumn);
     // });
-    
+
     this.containerDetailsTask.get().append(taskDt);
 
     this.#privateContainer.append(
       this.#privateNavbar.get(),
       this.containerDetailsTask.get()
     );
+  }
 
+  getColorLocalStorage() {
+    const body = document.getElementById("body");
+    const currentColor = localStorage.getItem("Bg_Color");
+    document.body.style.background = currentColor.replace(/['"]+/g, "");
   }
 }

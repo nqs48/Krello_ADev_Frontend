@@ -23,23 +23,33 @@ export class UpdateView {
 
   init() {
     console.log(this.privateData);
+    this.getColorLocalStorage();
+
     const actionBoardBar = ActionBar.GenerateBar(this.privateData);
 
     const boardColumn = new BoardColumn();
 
-    const columnTitles = ["Por Realizar","En Progreso","Terminado"]
+    const columnTitles = ["Por Realizar", "En Progreso", "Terminado"];
     let counter = 0;
-    this.privateData.ColumnsForBoard.forEach(columnObject => {
-      const oneColumn = boardColumn.GenerateBoardColumn(columnObject,columnTitles[counter]);
+    this.privateData.ColumnsForBoard.forEach((columnObject) => {
+      const oneColumn = boardColumn.GenerateBoardColumn(
+        columnObject,
+        columnTitles[counter]
+      );
       this.containerColumn.get().append(oneColumn);
       counter += 1;
     });
-
 
     this.#privateContainer.append(
       this.#privateNavbar.get(),
       actionBoardBar,
       this.containerColumn.get()
     );
+  }
+
+  getColorLocalStorage() {
+    const body = document.getElementById("body");
+    const currentColor = localStorage.getItem("Bg_Color");
+    document.body.style.background = currentColor.replace(/['"]+/g, "");
   }
 }
