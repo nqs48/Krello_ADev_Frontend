@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 import { Navbar } from "./components/navbar.component.mjs";
 import { Container } from "./components/container.component.mjs";
@@ -21,6 +21,10 @@ export class IndexView {
   }
 
   init() {
+    
+    if (localStorage.getItem("Bg_Color") == null) {
+      this.setColor();
+    }
     this.getColorLocalStorage();
     const card = new BoardCard();
     this.containerBoard.get().append(card.ContainerAdd);
@@ -39,4 +43,8 @@ export class IndexView {
     const currentColor = localStorage.getItem("Bg_Color");
     document.body.style.background = currentColor.replace(/['"]+/g, "");
   }
-} 
+
+  setColor() {
+    localStorage.setItem("Bg_Color", "");
+  }
+}
