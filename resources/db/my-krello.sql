@@ -94,13 +94,13 @@ create index krl_task_clm_id_Idx
 create index krl_task_clm_id_brd_id_Idx
     on krl_task (clm_id_column, brd_id_board);
 
-insert into krl_board (brd_name,brd_enable) values ("Tablero de pruebas",true);
+-- insert into krl_board (brd_name,brd_enable) values ("Tablero de pruebas",true);
 insert into krl_column (clm_name)
     values ("Por realizar"), ("En progreso"), ("Terminado");
-insert into krl_column_for_board (brd_id_board, clm_id_column)
-    values (1, 1), (1, 2), (1, 3);
-insert into krl_task (clm_id_column, brd_id_board, tsk_name, tsk_description, tsk_delivery_date,tsk_enable)
-    values (2, 1, "Crear el frontend", "Es necesario crear primero el frontend", "2022-07-27 23:59:59",true),
-           (1, 1, "Crear el backend del Reto de Programación Web", null, "2022-07-28 23:59:59",true),
-           (1, 1, "Realizar las prubas unitarias al backend", null, "2022-07-29 23:59:59",true),
-           (3, 1, "Esto es un ejemplo de tarea terminada", null, null,true);
+-- insert into krl_column_for_board (brd_id_board, clm_id_column)
+--     values (1, 1), (1, 2), (1, 3);
+-- insert into krl_task (clm_id_column, brd_id_board, tsk_name, tsk_description, tsk_delivery_date,tsk_enable)
+--     values (2, 1, "Crear el frontend", "Es necesario crear primero el frontend", "2022-07-27 23:59:59",true),
+--            (1, 1, "Crear el backend del Reto de Programación Web", null, "2022-07-28 23:59:59",true),
+--            (1, 1, "Realizar las prubas unitarias al backend", null, "2022-07-29 23:59:59",true),
+--            (3, 1, "Esto es un ejemplo de tarea terminada", null, null,true);
