@@ -1,3 +1,5 @@
+import { EventServices } from "../../model/services/events.services.mjs";
+
 export class Navbar {
   #privateNavbar;
 
@@ -14,6 +16,16 @@ export class Navbar {
     //<a class="navbar-brand" href="index.html">Krello</a>
     const div = document.createElement("div");
 
+    const btnDefault = document.createElement("button");
+    btnDefault.classList.add("dropdown-item");
+    btnDefault.textContent = "Default";
+    btnDefault.addEventListener("click", () => {
+      const color =
+        "radial-gradient(circle at 4.55% -4.17%, #feffff 0, #efffff 12.5%, #ddfffd 25%, #cafbf7 37.5%, #b5f2f2 50%, #9fe9ee 62.5%, #8ae1ec 75%, #76d9eb 87.5%, #62d1eb 100%)";
+      document.body.style.background = color;
+      this.CaptureBodyColor(color);
+    });
+
     const btnRed = document.createElement("button");
     btnRed.classList.add("dropdown-item");
     btnRed.textContent = "Red";
@@ -28,16 +40,18 @@ export class Navbar {
     btnGreen.classList.add("dropdown-item");
     btnGreen.textContent = "Green";
     btnGreen.addEventListener("click", () => {
-      const color= "radial-gradient(circle at 50% -20.71%, #fff56b 0, #fff866 6.25%, #fdfa63 12.5%, #e7fb61 18.75%, #d0fb62 25%, #b5fa65 31.25%, #97f86a 37.5%, #73f670 43.75%, #3cf278 50%, #00ee82 56.25%, #00ea8f 62.5%, #00e69d 68.75%, #00e2ad 75%, #00dfbe 81.25%, #00dbd1 87.5%, #00d8e3 93.75%, #00d6f6 100%)";
+      const color =
+        "radial-gradient(circle at 50% -20.71%, #fff56b 0, #fff866 6.25%, #fdfa63 12.5%, #e7fb61 18.75%, #d0fb62 25%, #b5fa65 31.25%, #97f86a 37.5%, #73f670 43.75%, #3cf278 50%, #00ee82 56.25%, #00ea8f 62.5%, #00e69d 68.75%, #00e2ad 75%, #00dfbe 81.25%, #00dbd1 87.5%, #00d8e3 93.75%, #00d6f6 100%)";
       document.body.style.background = color;
-      this.CaptureBodyColor(color); 
+      this.CaptureBodyColor(color);
     });
 
     const btnBlue = document.createElement("button");
     btnBlue.classList.add("dropdown-item");
     btnBlue.textContent = "Blue";
     btnBlue.addEventListener("click", () => {
-      const color= "radial-gradient(circle at 8.15% 0.13%, #ffffff 0, #ffffff 12.5%, #f9ffff 25%, #d8f0fa 37.5%, #b5def2 50%, #92cbeb 62.5%, #72bae5 75%, #55a9e0 87.5%, #3899dc 100%)";
+      const color =
+        "radial-gradient(circle at 8.15% 0.13%, #ffffff 0, #ffffff 12.5%, #f9ffff 25%, #d8f0fa 37.5%, #b5def2 50%, #92cbeb 62.5%, #72bae5 75%, #55a9e0 87.5%, #3899dc 100%)";
       document.body.style.background = color;
       this.CaptureBodyColor(color);
     });
@@ -68,7 +82,11 @@ export class Navbar {
     navbarToggler.append(navbarTogglerIcon);
 
     const navbarCollapse = document.createElement("div");
-    navbarCollapse.classList.add("collapse", "navbar-collapse");
+    navbarCollapse.classList.add(
+      "collapse",
+      "navbar-collapse",
+      "container-fluid"
+    );
     navbarCollapse.id = "navbarSupportedContent";
 
     const navbarNav = document.createElement("ul");
@@ -93,7 +111,7 @@ export class Navbar {
     dropdownList.id = "dropdown-list";
 
     const formSearch = document.createElement("form");
-    formSearch.classList.add("d-flex","ownSearch");
+    formSearch.classList.add("d-flex", "ownSearch");
     formSearch.setAttribute("role", "search");
 
     const inputSearch = document.createElement("input");
@@ -103,13 +121,13 @@ export class Navbar {
     inputSearch.setAttribute("aria-label", "Buscar");
 
     const buttonSearch = document.createElement("button");
-    buttonSearch.classList.add("btn", "btn-outline-info");
+    buttonSearch.classList.add("btn", "btn-outline-info", "mx-2");
     buttonSearch.setAttribute("type", "submit");
     buttonSearch.textContent = "Buscar";
 
     formSearch.append(inputSearch, buttonSearch);
 
-    dropdownList.append(btnRed, btnGreen, btnBlue);
+    dropdownList.append(btnDefault, btnRed, btnGreen, btnBlue);
 
     navbarNavItem.append(navbarNavItemLink, dropdownList);
 
@@ -129,5 +147,3 @@ export class Navbar {
     localStorage.setItem("Bg_Color", JSON.stringify(color));
   }
 }
-
-
